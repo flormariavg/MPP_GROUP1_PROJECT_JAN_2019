@@ -26,6 +26,11 @@ public class Login {
 		return roles;
 	}
 
+	@Override
+	public String toString() {
+		return "Login [userName=" + userName + ", password=" + password + ", roles=" + roles + "]";
+	}
+
 	
 
 }

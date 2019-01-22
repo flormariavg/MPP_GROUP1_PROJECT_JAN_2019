@@ -1,6 +1,6 @@
 # Project Title
 
-One Paragraph of project description goes here
+* https://docs.oracle.com/javase/8/scene-builder-2/get-started-tutorial/prepare-for-tutorial.htm
 
 ## Getting Started
 

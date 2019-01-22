@@ -1,4 +1,4 @@
-package view;
+package ui;
 
 import application.Main;
 import javafx.beans.value.ObservableValue;

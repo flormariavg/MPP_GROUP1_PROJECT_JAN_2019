@@ -1,8 +1,8 @@
 /application/
 /business/
 /dataaccess/
+/database/
 /docs/
 /model/
 /ui/
 /util/
-/view/

@@ -13,8 +13,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.PersonGiveProfessor;
-import view.PersonEditDialogController;
-import view.PersonOverviewController;
+import ui.PersonEditDialogController;
+import ui.PersonOverviewController;
 
 /**
  * You can find the code online.
@@ -58,18 +58,23 @@ public class Main extends Application {
 
 		initRootLayout();
 
-		showPersonOverview();
+		//showPersonOverview();
 	}
 
 	public void initRootLayout() {
 		try {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("../view/RootLayout.fxml"));
-			rootLayout = (BorderPane) loader.load();
+			
+			loader.setLocation(Main.class.getResource("../ui/Login.fxml"));
+			AnchorPane anchorPane = (AnchorPane)loader.load();
+
+		//	loader.setLocation(Main.class.getResource("../view/RootLayout.fxml"));
+			//rootLayout = (BorderPane) loader.load();
 
 			// Show the scene containing the root layout.
-			Scene scene = new Scene(rootLayout);
+			Scene scene = new Scene(anchorPane);
+			//Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {
@@ -81,7 +86,7 @@ public class Main extends Application {
 		try {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("../view/PersonOverview.fxml"));
+			loader.setLocation(Main.class.getResource("../ui/PersonOverview.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 
 			// Set person overview into the center of root layout.
@@ -107,7 +112,7 @@ public class Main extends Application {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("../view/PersonEditDialog.fxml"));
+			loader.setLocation(Main.class.getResource("../ui/PersonEditDialog.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 
 			// Create the dialog Stage.
