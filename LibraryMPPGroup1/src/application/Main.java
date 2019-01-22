@@ -58,7 +58,7 @@ public class Main extends Application {
 
 		initRootLayout();
 
-		//showPersonOverview();
+		showPersonOverview();
 	}
 
 	public void initRootLayout() {
@@ -66,15 +66,15 @@ public class Main extends Application {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
 			
-			loader.setLocation(Main.class.getResource("../ui/Login.fxml"));
-			AnchorPane anchorPane = (AnchorPane)loader.load();
+			//loader.setLocation(Main.class.getResource("../ui/Login.fxml"));
+			//AnchorPane anchorPane = (AnchorPane)loader.load();
 
-		//	loader.setLocation(Main.class.getResource("../view/RootLayout.fxml"));
-			//rootLayout = (BorderPane) loader.load();
+			loader.setLocation(Main.class.getResource("../ui/RootLayout.fxml"));
+			rootLayout = (BorderPane) loader.load();
 
 			// Show the scene containing the root layout.
-			Scene scene = new Scene(anchorPane);
-			//Scene scene = new Scene(rootLayout);
+			//Scene scene = new Scene(anchorPane);
+			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {
