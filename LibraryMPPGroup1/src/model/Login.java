@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Login {
+public class Login implements Serializable{
 	private String userName;
 	private String password;
 	private List<Role> roles;
@@ -26,11 +27,21 @@ public class Login {
 		return roles;
 	}
 
-	@Override
-	public String toString() {
-		return "Login [userName=" + userName + ", password=" + password + ", roles=" + roles + "]";
+	public void addRole(Role role) {
+		if (roles == null) {
+			roles = new ArrayList<>();
+		}
+		roles.add(role);
 	}
 
-	
+
+	@Override
+	public String toString() {
+		//return "Login [userName=" + userName + ", password=" + password + ", roles=" + roles + "]";
+
+		return getUserName() + " " + getPassword();
+	}
+
+
 
 }

@@ -16,8 +16,15 @@ public class LoginController {
 	private void handleLogin() {
 		Login login = new Login(txtUser.getText(), txtPassword.getText());
 		LoginService loginService= new LoginService();
-		loginService.login(login);
-		System.out.println(login);
+		if(loginService.login(login)) {
+			System.out.println(login);
+
+		} else {
+			System.out.println("Login fail");
+
+		}
+
+
 
 	}
 

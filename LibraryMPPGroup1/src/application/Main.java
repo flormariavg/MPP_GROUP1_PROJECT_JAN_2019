@@ -2,10 +2,12 @@ package application;
 
 import java.io.IOException;
 
+import dataaccess.LoginDAO;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -15,6 +17,7 @@ import javafx.stage.Stage;
 import model.PersonGiveProfessor;
 import ui.PersonEditDialogController;
 import ui.PersonOverviewController;
+import util.StringUtil;
 
 /**
  * You can find the code online.
@@ -56,16 +59,17 @@ public class Main extends Application {
 		this.primaryStage.setTitle("AddressApp");
 		this.primaryStage.getIcons().add(new Image("file:resources/images/Address_Book.png"));
 
-		initRootLayout();
+		//initRootLayout();
 
-		showPersonOverview();
+		//showPersonOverview();
+		showLoginScreen();
 	}
 
 	public void initRootLayout() {
 		try {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
-			
+
 			//loader.setLocation(Main.class.getResource("../ui/Login.fxml"));
 			//AnchorPane anchorPane = (AnchorPane)loader.load();
 
@@ -138,7 +142,33 @@ public class Main extends Application {
 		}
 	}
 
+
+	// Huong - Add methods of Login Screen
+
+
 	public static void main(String[] args) {
+		createData();
 		launch(args);
+	}
+
+	public static void createData() {
+
+		LoginDAO.createLoginAccountData();
+	}
+
+	public void showLoginScreen() {
+		try {
+			// Load root layout from fxml file.
+//			FXMLLoader loader = new FXMLLoader();
+//			loader.setLocation(Main.class.getResource("../ui/Login.fxml"));
+
+			Parent root = FXMLLoader.load(getClass().getResource("../ui/Login.fxml"));
+			Scene scene = new Scene(root);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle(StringUtil.TITLE_LOGIN);
+			primaryStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
