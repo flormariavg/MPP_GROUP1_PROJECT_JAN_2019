@@ -6,7 +6,7 @@ import java.util.List;
 
 import util.Functions;
 
-public class Librarian extends PersonGiveProfessor implements Role, Serializable {
+public class Librarian extends Person implements Role, Serializable {
 
 	List<Integer> functionList;
 	public void checkoutBook() {

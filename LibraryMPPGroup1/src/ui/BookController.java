@@ -1,16 +1,13 @@
 package ui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import application.Main;
 import business.BookService;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -56,8 +53,6 @@ public class BookController {
 
 	//private HashMap<String, Book> bookList;
 
-	private List<Author> authorList = new ArrayList<>();
-
 	private ObservableList<Author> authorData = FXCollections.observableArrayList();
 
 	private ObservableList<Book>  bookList = FXCollections.observableArrayList();
@@ -73,9 +68,7 @@ public class BookController {
 
 		BookService bookService = new BookService();
 		List<Book> list = bookService.getBookList();
-		for (Book book : list) {
-			addNewBook(book);
-		}
+		bookList.addAll(list);
 
 	}
 
@@ -92,6 +85,17 @@ public class BookController {
 		authorTable.setItems(getAuthorData());
 		bookTable.setItems(bookList);
 
+		bookTable.getSelectionModel().selectedItemProperty()
+		.addListener((observable, oldValue, newValue) -> showBookData(newValue));
+
+		if (bookList.size() > 0 ) {
+			bookTable.getSelectionModel().selectFirst();
+			authorData.clear();
+			List<Author> ath = bookList.get(0).getAuthorList();
+			if (ath != null)
+				authorData.addAll(ath);
+		}
+
 	}
 
 	public BookController() {
@@ -99,6 +103,28 @@ public class BookController {
 
 	}
 
+	public void showBookData(Book book) {
+
+		if (book != null) {
+			txtNumber.setText(book.getISBNNumber());
+			txtTitle.setText(book.getTitle());
+			txtNumberOfCopy.setText(""+ book.getBooks().size());
+			txtMaximumCheckoutLenght.setText(book.getAvailability());
+			authorData.clear();
+			List<Author> ath =book.getAuthorList();
+			if (ath != null)
+				authorData.addAll(ath);
+
+		} else {
+
+			txtNumber.setText("");
+			txtTitle.setText("");
+			txtNumberOfCopy.setText("");
+			txtMaximumCheckoutLenght.setText("");
+			authorData.clear();
+		}
+
+	}
 	private void preJava8() {
 		firstNameColumn.setCellValueFactory(new Callback<CellDataFeatures<Author, String>, ObservableValue<String>>() {
 
@@ -145,6 +171,16 @@ public class BookController {
 		});
 	}
 
+	@FXML
+	public void handleClearAllScreen() {
+
+
+		txtNumber.setText("");
+		txtTitle.setText("");
+		txtNumberOfCopy.setText("");
+		txtMaximumCheckoutLenght.setText("");
+		authorData.clear();
+	}
 
 	@FXML
 	public void handleAddAuthor() {
@@ -163,8 +199,13 @@ public class BookController {
 		if (isInputValid()) {
 			String title = txtTitle.getText();
 			String iSBNNumber = txtNumber.getText();
-			String availability = "false";
-			Book book = new Book(title, iSBNNumber, authorList, availability);
+			String availability = "0";
+			List<Author> auth = new ArrayList<>();
+			for (Author author : authorData) {
+				auth.add(author);
+			}
+
+			Book book = new Book(title, iSBNNumber, auth, availability);
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(mainApp.getPrimaryStage());
 			alert.setTitle("Add book");

@@ -6,7 +6,7 @@ import java.util.List;
 
 import util.Functions;
 
-public class Administrator extends PersonGiveProfessor implements Role,  Serializable {
+public class Administrator extends Person implements Role,  Serializable {
 
 	List<Integer> functionList;
 
