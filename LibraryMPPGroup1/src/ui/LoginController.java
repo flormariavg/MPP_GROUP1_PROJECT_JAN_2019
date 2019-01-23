@@ -21,7 +21,9 @@ public class LoginController {
 		LoginService loginService= new LoginService();
 		if(loginService.login(login)) {
 
-			mainApp.showAddNewBook();
+			mainApp.showMenu();
+			//mainApp.showAddNewBook();
+			
 
 		} else {
 			System.out.println("Login fail");

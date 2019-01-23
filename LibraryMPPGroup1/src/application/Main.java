@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import model.PersonGiveProfessor;
 import ui.BookController;
 import ui.LoginController;
+import ui.MenuController;
 import ui.PersonEditDialogController;
 import ui.PersonOverviewController;
 import util.StringUtil;
@@ -62,9 +63,8 @@ public class Main extends Application {
 		this.primaryStage.getIcons().add(new Image("file:resources/images/Address_Book.png"));
 
 		initRootLayout();
-
-		//showPersonOverview();
 		showLoginScreen();
+
 	}
 
 	public void initRootLayout() {
@@ -72,14 +72,14 @@ public class Main extends Application {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
 
-			//loader.setLocation(Main.class.getResource("../ui/Login.fxml"));
-			//AnchorPane anchorPane = (AnchorPane)loader.load();
+			// loader.setLocation(Main.class.getResource("../ui/Login.fxml"));
+			// AnchorPane anchorPane = (AnchorPane)loader.load();
 
 			loader.setLocation(Main.class.getResource("../ui/RootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
 
 			// Show the scene containing the root layout.
-			//Scene scene = new Scene(anchorPane);
+			// Scene scene = new Scene(anchorPane);
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -106,12 +106,11 @@ public class Main extends Application {
 	}
 
 	/**
-	 * Opens a dialog to edit details for the specified person. If the user
-	 * clicks OK, the changes are saved into the provided person object and true
-	 * is returned.
+	 * Opens a dialog to edit details for the specified person. If the user clicks
+	 * OK, the changes are saved into the provided person object and true is
+	 * returned.
 	 *
-	 * @param person
-	 *            the person object to be edited
+	 * @param person the person object to be edited
 	 * @return true if the user clicked OK, false otherwise.
 	 */
 	public boolean showPersonEditDialog(PersonGiveProfessor person) {
@@ -144,9 +143,7 @@ public class Main extends Application {
 		}
 	}
 
-
 	// Huong - Add methods of Login Screen
-
 
 	public static void main(String[] args) {
 		createData();
@@ -165,7 +162,7 @@ public class Main extends Application {
 			AnchorPane loginScreen = (AnchorPane) loader.load();
 			rootLayout.setCenter(loginScreen);
 			primaryStage.setTitle(StringUtil.TITLE_LOGIN);
-			//primaryStage.show();
+			// primaryStage.show();
 			LoginController loginControl = loader.getController();
 			loginControl.setMainApp(this);
 		} catch (IOException e) {
@@ -176,15 +173,32 @@ public class Main extends Application {
 	public void showAddNewBook() {
 		try {
 			// Load person overview.
-						FXMLLoader loader = new FXMLLoader();
-						loader.setLocation(Main.class.getResource("../ui/BookOverview.fxml"));
-						AnchorPane bookOverview = (AnchorPane) loader.load();
-						// Set person overview into the center of root layout.
-						rootLayout.setCenter(bookOverview);
-						primaryStage.setTitle(StringUtil.TITLE_LOGIN);
-						//primaryStage.show();
-						BookController controller = loader.getController();
-						controller.setMainApp(this);
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("../ui/BookOverview.fxml"));
+			AnchorPane bookOverview = (AnchorPane) loader.load();
+			// Set person overview into the center of root layout.
+			rootLayout.setCenter(bookOverview);
+			primaryStage.setTitle(StringUtil.TITLE_LOGIN);
+			// primaryStage.show();
+			BookController controller = loader.getController();
+			controller.setMainApp(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void showMenu() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("../ui/Menu.fxml"));
+			AnchorPane menu = (AnchorPane) loader.load();
+			// Set person overview into the center of root layout.
+			rootLayout.setCenter(menu);
+			primaryStage.setTitle(StringUtil.TITLE_MENU);
+			// primaryStage.show();
+			MenuController menuController = loader.getController();
+			menuController.setMainApp(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
