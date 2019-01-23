@@ -16,6 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.PersonGiveProfessor;
 import ui.BookController;
+import ui.ChechoutBookOverviewController;
 import ui.LoginController;
 import ui.MenuController;
 import ui.PersonEditDialogController;
@@ -199,6 +200,23 @@ public class Main extends Application {
 			// primaryStage.show();
 			MenuController menuController = loader.getController();
 			menuController.setMainApp(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void showCheckoutBook() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("../ui/CheckoutBookOverview.fxml"));
+			AnchorPane menu = (AnchorPane) loader.load();
+			// Set person overview into the center of root layout.
+			rootLayout.setCenter(menu);
+			primaryStage.setTitle(StringUtil.TITLE_CHECKOUTBOOK);
+			// primaryStage.show();
+			ChechoutBookOverviewController chechoutBookOverviewController = loader.getController();
+			chechoutBookOverviewController.setMainApp(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,7 @@
 package ui;
 
 import application.Main;
+import javafx.fxml.FXML;
 
 public class MenuController {
 	
@@ -12,4 +13,9 @@ public class MenuController {
 
 	}
 
+	@FXML
+	private void handleChekoutBook() {
+			mainApp.showCheckoutBook();
+
+	}
 }
