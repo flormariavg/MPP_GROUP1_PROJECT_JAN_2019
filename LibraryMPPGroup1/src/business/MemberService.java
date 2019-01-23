@@ -19,4 +19,11 @@ public class MemberService {
 
 		return (List<Member>) memberDAO.findAll();
 	}
+
+	public Member searchMemberId(String memberId){
+
+		return (Member) memberDAO.findById(memberId);
+	}
+
+
 }

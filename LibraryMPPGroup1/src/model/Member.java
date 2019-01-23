@@ -12,6 +12,15 @@ public class Member extends Person implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String memberNumber;
+	private CheckoutRecord checkoutRecord;
+
+	public CheckoutRecord getCheckoutRecord() {
+		return checkoutRecord;
+	}
+
+	public void setCheckoutRecord(CheckoutRecord checkoutRecord) {
+		this.checkoutRecord = checkoutRecord;
+	}
 
 	public Member() {
 		// TODO Auto-generated constructor stub

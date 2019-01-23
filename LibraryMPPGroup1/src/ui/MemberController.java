@@ -1,5 +1,6 @@
 package ui;
 
+
 import java.util.List;
 
 import application.Main;
@@ -12,10 +13,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
 import model.Book;
+import model.CheckoutRecord;
 import model.Member;
 import model.PersonGiveProfessor;
 
@@ -43,6 +46,10 @@ public class MemberController {
 	private Label stateLabel;
 	@FXML
 	private Label phoneNumberLabel;
+	@FXML
+	private TextField searchField;
+
+
 
 	private Main mainApp;
 
@@ -54,7 +61,36 @@ public class MemberController {
 			memberList.add(member);
 
 	}
+	@FXML
+	public void handleSearchMemberID() {
 
+		MemberService service = new MemberService();
+		String memberId = searchField.getText();
+		Member member = service.searchMemberId(memberId);
+
+
+		//print to console
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.initOwner(mainApp.getPrimaryStage());
+		alert.setTitle("Search Member");
+		alert.setHeaderText("Search Member ID");
+		if (member != null) {
+			CheckoutRecord checkoutRecord = member.getCheckoutRecord();
+			alert.setContentText("Member ID exist in System");
+			System.out.println(member);
+			if (checkoutRecord != null ) {
+				System.out.println(checkoutRecord);
+				System.out.println(checkoutRecord.getCheckoutEntries().toString());
+			}
+		} else{
+
+			alert.setContentText("Not found Member ID");
+
+		}
+		alert.showAndWait();
+
+	}
+	@FXML
 	public void handleCreateNewMember() {
 
 		Member tempPerson = new Member();

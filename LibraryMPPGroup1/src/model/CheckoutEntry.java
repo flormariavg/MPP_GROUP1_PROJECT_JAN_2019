@@ -1,8 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class CheckoutEntry {
+public class CheckoutEntry implements Serializable{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -7107940604611490743L;
 	private LocalDate checkoutDate;
 	private LocalDate dueDate;
 	private String status;
@@ -29,6 +34,15 @@ public class CheckoutEntry {
 
 	public BookCopy getBookCopy() {
 		return bookCopy;
+	}
+
+	@Override
+	public String toString() {
+		StringBuffer str = new StringBuffer();
+		str.append("|	Checkout Date	|	DueDate		|	BookCopy	|	status	|");
+		str.append("|	" + getCheckoutDate() +"	|	" + getDueDate()	+	"	|	" + getBookCopy().getCopyNumber() + " 	|	" + getStatus() + "	|");
+
+		return str.toString();
 	}
 
 }
