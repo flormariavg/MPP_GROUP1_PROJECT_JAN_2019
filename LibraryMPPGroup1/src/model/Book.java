@@ -17,21 +17,20 @@ public class Book implements Serializable{
 	private String availability;
 	private List<BookCopy> bookCopies;
 
-	public Book(String title, String iSBNNumber, String authorList, String availability) {
+	public Book(String id, String title, String iSBNNumber, String authorList, String availability) {
 		this.title = title;
 		ISBNNumber = iSBNNumber;
 		this.authorList = authorList;
 		this.availability = availability;
+		this.id=id;
 		this.bookCopies = new ArrayList<>();
 	}
 
-	public void addBook() {
-		BookCopy bookCopy= new BookCopy("copyNumber");
+	public void addBook(int copyNumber) {
+		BookCopy bookCopy= new BookCopy(copyNumber);
 		bookCopies.add(bookCopy);
-
-
-
-	}
+		}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -50,6 +49,12 @@ public class Book implements Serializable{
 
 	public List<BookCopy> getBooks() {
 		return bookCopies;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", ISBNNumber=" + ISBNNumber + ", authorList=" + authorList
+				+ ", availability=" + availability + ", bookCopies=" + bookCopies + "]";
 	}
 
 }

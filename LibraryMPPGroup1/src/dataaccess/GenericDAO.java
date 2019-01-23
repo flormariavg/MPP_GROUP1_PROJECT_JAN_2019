@@ -16,16 +16,17 @@ public abstract class GenericDAO<E> {
 
 	public boolean create(E object) {
 		try {
-			Field field = object.getClass().getField("id"); //Note, this can throw an exception if the field doesn't exist.
-		    String objectId = field.get(object).toString();
-			E dbObject = findById(objectId);
+			Field field = object.getClass().getField("id"); //Estructura:public String id //Reflection
+		    String objectId = field.get(object).toString(); //get value save in the id
+			E dbObject = findById(objectId);//lookfor if the record exist
 			
-			if(dbObject!=null)
+			if(dbObject!=null)//valid if record does't exist
 				return false;
 			
 			List existingObjects = findAll();
-			existingObjects.add(object);
+			existingObjects.add(object);//add new record
 			
+			//object.getClass().getSimpleName()  name od the class
 			FileOutputStream fileOutputStream = new FileOutputStream(
 					OUTPUT_DIR + object.getClass().getSimpleName() + ".txt");
 			
@@ -90,7 +91,7 @@ public abstract class GenericDAO<E> {
 			ObjectInputStream input = new ObjectInputStream(fileInputStream);
 			Object object = input.readObject();
 			while (object != null) {
-			    Field field = object.getClass().getField("id");//Generics
+			    Field field = object.getClass().getField("id");//Reflection
 			    String objectId = field.get(object).toString();
 			    if(objectId.equals(id))
 			    		return (E) object; 

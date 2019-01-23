@@ -15,8 +15,7 @@ public class BookService {
 		//		System.out.println(bookDAO.findById("ABCD", Book.class));
 		
 		BookService service = new BookService();
-		Book book = new Book("abc", "abc", "abc", "abc");
-		book.id = "12345";
+		Book book = new Book("123","abc", "abc", "abc", "abc");
 		System.out.println(service.createBook(book));
 	}
 

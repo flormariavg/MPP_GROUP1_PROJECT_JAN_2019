@@ -1,6 +1,13 @@
 package model;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public String id;
 	private String street;
 	private String postalCode;
 	private String city;
@@ -22,5 +29,11 @@ public class Address {
 	public String getCity() {
 		return city;
 	}
+
+	@Override
+	public String toString() {
+		return "Address [street=" + street + ", postalCode=" + postalCode + ", city=" + city + "]";
+	}
+	
 
 }

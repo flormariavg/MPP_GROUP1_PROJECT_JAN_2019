@@ -25,9 +25,9 @@
                      <children>
                         <Label text="Member ID" />
                         <Label text="ISBN" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="305.0" text="Checkout Book" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtMemberId" GridPane.columnIndex="1" />
+                        <TextField fx:id="txtISBN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#handleChekoutBooks" prefHeight="48.0" prefWidth="305.0" text="Checkout Book" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <Label layoutX="18.0" layoutY="34.0" text="Checkout Book" />
