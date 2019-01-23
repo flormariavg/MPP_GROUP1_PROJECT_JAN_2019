@@ -42,7 +42,7 @@ public class CheckoutBookService {
 		service.createMember(member);
 		System.out.println(service.getMember("123"));
 
-		Book book= new Book("123", "Title",null , "availability");
+		Book book= new Book("123", "Title",null , "availability", 21);
 		service.createBook(book);
 		System.out.println(service.getBook("1234"));
 

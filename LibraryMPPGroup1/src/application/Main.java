@@ -70,7 +70,9 @@ public class Main extends Application {
 		this.primaryStage.getIcons().add(new Image("file:resources/images/Address_Book.png"));
 
 		initRootLayout();
-		showLoginScreen();
+		//showLoginScreen();
+		//showMemberOverview();
+		showAddNewBook();
 
 	}
 

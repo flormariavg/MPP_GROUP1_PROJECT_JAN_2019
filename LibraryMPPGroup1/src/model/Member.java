@@ -28,6 +28,10 @@ public class Member extends Person implements Serializable{
 		return memberNumber;
 	}
 
+	public void setMemberNumber(String memberNumber) {
+		 this.memberNumber = memberNumber;
+	}
+
 	public StringProperty firstNameProperty() {
 		return new SimpleStringProperty(getFirstName());
 	}

@@ -35,6 +35,7 @@ public class MemberAddDialogController {
 	private void handleOk() {
 		if (isInputValid()) {
 			person.setId(memberIdField.getText());
+			person.setMemberNumber(memberIdField.getText());
 			person.setFirstName(firstNameField.getText());
 			person.setLastName(lastNameField.getText());
 	        Address address= new Address(streetField.getText(), cityField.getText(),stateField.getText(),postalCodeField.getText());

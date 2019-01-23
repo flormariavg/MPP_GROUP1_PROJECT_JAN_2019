@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.BookController">
    <children>
-     <SplitPane dividerPositions="0.2" prefHeight="650.0" prefWidth="140" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+     <SplitPane dividerPositions="0.2287145242070117" prefHeight="650.0" prefWidth="140" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -44,13 +44,13 @@
             <TextField fx:id="txtNumber" GridPane.columnIndex="1" />
             <TextField fx:id="txtTitle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="txtNumberOfCopy" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="txtMaximumCheckoutLenght" prefHeight="25.0" prefWidth="297.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ChoiceBox fx:id="cb" prefHeight="25.0" prefWidth="312.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
 
       <Button layoutX="257.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleAddNewBook" prefHeight="40.0" prefWidth="118.0" text="Add Book" />
-      <Button layoutX="413.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="40.0" prefWidth="132.0" text="Cancel" />
-      <TableView fx:id="authorTable" layoutX="71.0" layoutY="316.0" prefHeight="221.0" prefWidth="817.0">
+      <Button layoutX="545.0" layoutY="582.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="40.0" prefWidth="132.0" text="Cancel" />
+      <TableView fx:id="authorTable" layoutX="52.0" layoutY="316.0" prefHeight="221.0" prefWidth="817.0">
         <columns>
           <TableColumn fx:id="firstNameColumn" prefWidth="100.0" text="Firstname" />
           <TableColumn fx:id="lastNameColumn" prefWidth="104.0" text="Lastname" />
@@ -66,8 +66,8 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Button fx:id="btn_add_author" layoutX="810.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleAddAuthor" text="Add Author" />
-                  <Button layoutX="577.0" layoutY="583.0" mnemonicParsing="false" onAction="#handleClearAllScreen" prefHeight="38.0" prefWidth="118.0" text="Clear All" />
+      <Button fx:id="btn_add_author" layoutX="810.0" layoutY="272.0" mnemonicParsing="false" onAction="#handleAddAuthor" text="Add Author" />
+                  <Button layoutX="401.0" layoutY="583.0" mnemonicParsing="false" onAction="#handleClearAllScreen" prefHeight="38.0" prefWidth="118.0" text="Clear All" />
          </children>
       </AnchorPane>
       </items>

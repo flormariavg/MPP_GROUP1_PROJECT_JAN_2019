@@ -22,7 +22,7 @@ public class AddBookCopyService {
 	public static void main(String[] args) {
 		AddBookCopyService service = new AddBookCopyService();
 
-		service.bookDAO.create(new Book("123", "123", null, "123"));
+		service.bookDAO.create(new Book("123", "123", null, "123", 21));
 	}
 
 }

@@ -8,9 +8,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
 import model.Book;
@@ -59,13 +61,21 @@ public class MemberController {
 		boolean okClicked = mainApp.showAddMemberDialog(tempPerson);
 		if (okClicked) {
 
-			//System.out.print(tempPerson.getFirstName());
+
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.initOwner(mainApp.getPrimaryStage());
+			alert.setTitle("Add book");
+			alert.setHeaderText("Add book");
+
 			MemberService memberServ= new MemberService();
-			memberServ.addNewMember(tempPerson);
-			addNewMember(tempPerson);
-			//showMemberData(tempPerson);
+			if (memberServ.addNewMember(tempPerson)) {
+				addNewMember(tempPerson);
+				alert.setContentText("Add new member successfully!");
 
-
+			} else {
+				alert.setContentText("Member is added before!");
+			}
+			alert.showAndWait();
 		}
 
 	}

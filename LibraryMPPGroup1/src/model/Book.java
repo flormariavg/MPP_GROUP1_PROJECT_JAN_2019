@@ -19,14 +19,24 @@ public class Book implements Serializable{
 	private List<Author> authorList;
 	private String availability;
 	private List<BookCopy> bookCopies;
+	private int maximumCheckOutLength;
 
-	public Book(String title, String iSBNNumber, List<Author>  authorList, String availability) {
+	public int getMaximumCheckOutLength() {
+		return maximumCheckOutLength;
+	}
+
+	public void setMaximumCheckOutLength(int maximumCheckOutLength) {
+		this.maximumCheckOutLength = maximumCheckOutLength;
+	}
+
+	public Book(String title, String iSBNNumber, List<Author>  authorList, String availability, int maxCheckoutLength) {
 		this.title = title;
 		this.ISBNNumber = iSBNNumber;
 		this.id = iSBNNumber;
 		this.authorList = authorList;
 		this.availability = availability;
 		this.bookCopies = new ArrayList<>();
+		this.maximumCheckOutLength = maxCheckoutLength;
 	}
 
 	public void addBook(int copyNumber) {

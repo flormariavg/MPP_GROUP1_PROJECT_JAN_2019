@@ -1,33 +1,33 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .background {
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #0A959A;
 }
 
 .label {
     -fx-font-size: 11.0pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
-    -fx-opacity: 0.6;
+
 }
 
 .label-bright {
     -fx-font-size: 11.0pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: white;
-    -fx-opacity: 1.0;
+
 }
 
 .label-header {
     -fx-font-size: 32.0pt;
     -fx-font-family: "Segoe UI Light";
     -fx-text-fill: white;
-    -fx-opacity: 1.0;
+
 }
 
 .table-view {
     -fx-base: #1d1d1d;
-    -fx-control-inner-background: #1d1d1d;
-    -fx-background-color: #1d1d1d;
+    -fx-control-inner-background: white;
+    -fx-background-color: white;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5.0;
@@ -55,6 +55,8 @@
     -fx-text-fill: white;
     -fx-alignment: center-left;
     -fx-opacity: 1.0;
+    -fx-text-fill: black;
+
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
@@ -104,10 +106,10 @@
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2.0;
     -fx-background-radius: 0.0;
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: #096366;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11.0pt;
-    -fx-text-fill: #d8d8d8;
+    -fx-text-fill: white;
     -fx-background-insets: 0.0 0.0 0.0 0.0, 0.0, 1.0, 2.0;
 }
 
@@ -141,4 +143,11 @@
 
 .button:default:hover {
     -fx-background-color: derive(-fx-focus-color,30.0%);
+}
+
+.check-box {
+  -fx-font-size: 18;
+  -fx-font-weight: bold;
+  -fx-text-fill: black;
+  -fx-background-color: #3a3a3a;
 }

@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
 import model.Author;
@@ -43,11 +44,12 @@ public class BookController {
 	@FXML
 	private TextField txtTitle;
 	@FXML
-	private TextField txtMaximumCheckoutLenght;
-	@FXML
 	private TextField txtNumberOfCopy;
 	@FXML
 	private TableView<String> tableView;
+
+	@FXML
+	private ChoiceBox<Integer> cb;
 
 	private Main mainApp;
 
@@ -76,8 +78,13 @@ public class BookController {
 	private void initialize() {
 
 		preJava8();
+		//cb = new ChoiceBox(FXCollections.observableArrayList(21, 7 ));
 
+		 cb.setItems(FXCollections.observableArrayList(
+		     21,7)
+		 );
 
+		 txtNumberOfCopy.setText("0");
 		// getList data from database
 		getBookListFromDatabase();
 
@@ -109,7 +116,12 @@ public class BookController {
 			txtNumber.setText(book.getISBNNumber());
 			txtTitle.setText(book.getTitle());
 			txtNumberOfCopy.setText(""+ book.getBooks().size());
-			txtMaximumCheckoutLenght.setText(book.getAvailability());
+			if (book.getMaximumCheckOutLength()!= 21 && book.getMaximumCheckOutLength()!= 7)
+				cb.getSelectionModel().selectFirst();
+			else
+				cb.getSelectionModel().select(book.getMaximumCheckOutLength());
+
+
 			authorData.clear();
 			List<Author> ath =book.getAuthorList();
 			if (ath != null)
@@ -120,7 +132,7 @@ public class BookController {
 			txtNumber.setText("");
 			txtTitle.setText("");
 			txtNumberOfCopy.setText("");
-			txtMaximumCheckoutLenght.setText("");
+			cb.getSelectionModel().selectFirst();
 			authorData.clear();
 		}
 
@@ -178,7 +190,7 @@ public class BookController {
 		txtNumber.setText("");
 		txtTitle.setText("");
 		txtNumberOfCopy.setText("");
-		txtMaximumCheckoutLenght.setText("");
+		cb.getSelectionModel().selectFirst();
 		authorData.clear();
 	}
 
@@ -199,13 +211,14 @@ public class BookController {
 		if (isInputValid()) {
 			String title = txtTitle.getText();
 			String iSBNNumber = txtNumber.getText();
-			String availability = "0";
+			String availability = "1"; // can borrow
 			List<Author> auth = new ArrayList<>();
+
 			for (Author author : authorData) {
 				auth.add(author);
 			}
 
-			Book book = new Book(title, iSBNNumber, auth, availability);
+			Book book = new Book(title, iSBNNumber, auth, availability, cb.getSelectionModel().getSelectedItem());
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(mainApp.getPrimaryStage());
 			alert.setTitle("Add book");
@@ -215,15 +228,12 @@ public class BookController {
 			BookService bookService = new BookService();
 			if (bookService.createBook(book)) {
 				addNewBook(book);
-
 				alert.setContentText("Add book successfully!");
 
-				alert.showAndWait();
-
 			} else {
-				alert.setContentText("Book is added!");
-				alert.showAndWait();
+				alert.setContentText("Book is added before!");
 			}
+			alert.showAndWait();
 		}
 	}
 
@@ -251,9 +261,9 @@ public class BookController {
 			errorMessage += "No valid NumberOfCopy!\n";
 		}
 
-		if (txtMaximumCheckoutLenght.getText() == null || txtMaximumCheckoutLenght.getText().length() == 0) {
-			errorMessage += "No valid MaximumCheckoutLenght!\n";
-		}
+//		if (cb.selectionModelProperty().get == null || txtMaximumCheckoutLenght.getText().length() == 0) {
+//			errorMessage += "No valid MaximumCheckoutLenght!\n";
+//		}
 
 		if (errorMessage.length() == 0) {
 			return true;
