@@ -71,7 +71,6 @@ public class BookController {
 		BookService bookService = new BookService();
 		List<Book> list = bookService.getBookList();
 		bookList.addAll(list);
-
 	}
 
 	@FXML
@@ -85,6 +84,7 @@ public class BookController {
 		 );
 
 		 txtNumberOfCopy.setText("0");
+		 txtNumberOfCopy.setDisable(true);
 		// getList data from database
 		getBookListFromDatabase();
 
@@ -259,6 +259,17 @@ public class BookController {
 		}
 		if (txtNumberOfCopy.getText() == null || txtNumberOfCopy.getText().length() == 0) {
 			errorMessage += "No valid NumberOfCopy!\n";
+		}
+
+		if (txtNumberOfCopy.getText() == null || txtNumberOfCopy.getText().length() == 0) {
+			errorMessage += "No valid postal code!\n";
+		} else {
+			// try to parse the postal code into an int.
+			try {
+				Integer.parseInt(txtNumberOfCopy.getText());
+			} catch (NumberFormatException e) {
+				errorMessage += "No valid NumberOfCopy (must be an integer)!\n";
+			}
 		}
 
 //		if (cb.selectionModelProperty().get == null || txtMaximumCheckoutLenght.getText().length() == 0) {
