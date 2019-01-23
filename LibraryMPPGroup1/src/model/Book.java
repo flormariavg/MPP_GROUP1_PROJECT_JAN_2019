@@ -4,25 +4,28 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Book implements Serializable{
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -4656978044891832694L;
 	public String id;
 	private String title;
 	private String ISBNNumber;
-	private String authorList;
+	private List<Author> authorList;
 	private String availability;
 	private List<BookCopy> bookCopies;
 
-	public Book(String id, String title, String iSBNNumber, String authorList, String availability) {
+	public Book(String title, String iSBNNumber, List<Author>  authorList, String availability) {
 		this.title = title;
-		ISBNNumber = iSBNNumber;
+		this.ISBNNumber = iSBNNumber;
+		this.id = iSBNNumber;
 		this.authorList = authorList;
 		this.availability = availability;
-		this.id=id;
 		this.bookCopies = new ArrayList<>();
 	}
 
@@ -30,7 +33,7 @@ public class Book implements Serializable{
 		BookCopy bookCopy= new BookCopy(copyNumber);
 		bookCopies.add(bookCopy);
 		}
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -39,7 +42,7 @@ public class Book implements Serializable{
 		return ISBNNumber;
 	}
 
-	public String getAuthorList() {
+	public List<Author> getAuthorList() {
 		return authorList;
 	}
 
@@ -49,6 +52,13 @@ public class Book implements Serializable{
 
 	public List<BookCopy> getBooks() {
 		return bookCopies;
+	}
+	public StringProperty getISBNNumberProperty() {
+		return new SimpleStringProperty(getISBNNumber());
+	}
+
+	public StringProperty getTitleProperty() {
+		return new SimpleStringProperty(getTitle());
 	}
 
 	@Override

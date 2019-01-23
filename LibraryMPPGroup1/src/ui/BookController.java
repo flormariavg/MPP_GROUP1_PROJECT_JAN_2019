@@ -1,15 +1,46 @@
 package ui;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import application.Main;
+import business.BookService;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.util.Callback;
+import model.Author;
 import model.Book;
+
 
 public class BookController {
 
+	@FXML
+	private TableView<Author> authorTable;
+	@FXML
+	private TableColumn<Author, String> firstNameColumn;
+	@FXML
+	private TableColumn<Author, String> lastNameColumn;
+	@FXML
+	private TableColumn<Author, String> phoneNumberColumn;
+	@FXML
+	private TableColumn<Author, String> addressColumn;
+	@FXML
+	private TableView<Book> bookTable;
+	@FXML
+	private TableColumn<Book, String> BookIDColumn;
+	@FXML
+	private TableColumn<Book, String> TitleColumn;
 	@FXML
 	private TextField txtNumber;
 	@FXML
@@ -23,28 +54,136 @@ public class BookController {
 
 	private Main mainApp;
 
-	private HashMap<String, Book> bookList;
+	//private HashMap<String, Book> bookList;
+
+	private List<Author> authorList = new ArrayList<>();
+
+	private ObservableList<Author> authorData = FXCollections.observableArrayList();
+
+	private ObservableList<Book>  bookList = FXCollections.observableArrayList();
 
 	public void addNewBook(Book book) {
 
-		bookList.put(book.getISBNNumber(), book);
+		if (book != null)
+			bookList.add(book);
+
+	}
+
+	public void getBookListFromDatabase() {
+
+		BookService bookService = new BookService();
+		List<Book> list = bookService.getBookList();
+		for (Book book : list) {
+			addNewBook(book);
+		}
+
+	}
+
+	@FXML
+	private void initialize() {
+
+		preJava8();
+
+
+		// getList data from database
+		getBookListFromDatabase();
+
+		// Add observable list data to the table
+		authorTable.setItems(getAuthorData());
+		bookTable.setItems(bookList);
 
 	}
 
 	public BookController() {
 
-		bookList = new HashMap<>();
+
 	}
 
+	private void preJava8() {
+		firstNameColumn.setCellValueFactory(new Callback<CellDataFeatures<Author, String>, ObservableValue<String>>() {
+
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Author, String> param) {
+				return  param.getValue().getFirstNameProperty();
+			}
+		});
+
+		lastNameColumn.setCellValueFactory(new Callback<CellDataFeatures<Author, String>, ObservableValue<String>>() {
+
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Author, String> param) {
+				return param.getValue().getLastNameProperty();
+			}
+		});
+		phoneNumberColumn.setCellValueFactory(new Callback<CellDataFeatures<Author, String>, ObservableValue<String>>() {
+
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Author, String> param) {
+				return param.getValue().getPhoneNumberProperty();
+			}
+		});
+		addressColumn.setCellValueFactory(new Callback<CellDataFeatures<Author, String>, ObservableValue<String>>() {
+
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Author, String> param) {
+				return param.getValue().getAddressProperty();
+			}
+		});
+		BookIDColumn.setCellValueFactory(new Callback<CellDataFeatures<Book, String>, ObservableValue<String>>() {
+
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Book, String> param) {
+				return param.getValue().getISBNNumberProperty();
+			}
+		});
+		TitleColumn.setCellValueFactory(new Callback<CellDataFeatures<Book, String>, ObservableValue<String>>() {
+
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Book, String> param) {
+				return param.getValue().getTitleProperty();
+			}
+		});
+	}
+
+
 	@FXML
-	public void handleAddAuthor(){
+	public void handleAddAuthor() {
+
+			Author tempAuthor = new Author();
+			boolean okClicked = mainApp.showAuthorDialog(tempAuthor);
+			if (okClicked) {
+				addAuthortoTable(tempAuthor);
+			}
 
 	}
 
 	@FXML
 	public void handleAddNewBook() {
 
+		if (isInputValid()) {
+			String title = txtTitle.getText();
+			String iSBNNumber = txtNumber.getText();
+			String availability = "false";
+			Book book = new Book(title, iSBNNumber, authorList, availability);
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.initOwner(mainApp.getPrimaryStage());
+			alert.setTitle("Add book");
+			alert.setHeaderText("Add book");
 
+			// add to database
+			BookService bookService = new BookService();
+			if (bookService.createBook(book)) {
+				addNewBook(book);
+
+				alert.setContentText("Add book successfully!");
+
+				alert.showAndWait();
+
+			} else {
+				alert.setContentText("Book is added!");
+				alert.showAndWait();
+			}
+		}
 	}
 
 	@FXML
@@ -52,10 +191,59 @@ public class BookController {
 
 	}
 
+
+	/**
+	 * Validates the user input in the text fields.
+	 *
+	 * @return true if the input is valid
+	 */
+	private boolean isInputValid() {
+		String errorMessage = "";
+
+		if (txtTitle.getText() == null || txtTitle.getText().length() == 0) {
+			errorMessage += "No valid title !\n";
+		}
+		if (txtNumber.getText() == null || txtNumber.getText().length() == 0) {
+			errorMessage += "No valid Booknumer !\n";
+		}
+		if (txtNumberOfCopy.getText() == null || txtNumberOfCopy.getText().length() == 0) {
+			errorMessage += "No valid NumberOfCopy!\n";
+		}
+
+		if (txtMaximumCheckoutLenght.getText() == null || txtMaximumCheckoutLenght.getText().length() == 0) {
+			errorMessage += "No valid MaximumCheckoutLenght!\n";
+		}
+
+		if (errorMessage.length() == 0) {
+			return true;
+		} else {
+			// Show the error message.
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.initOwner(mainApp.getPrimaryStage());
+			alert.setTitle("Invalid Fields");
+			alert.setHeaderText("Please correct invalid fields");
+			alert.setContentText(errorMessage);
+
+			alert.showAndWait();
+
+			return false;
+		}
+	}
+
+	public ObservableList<Author> getAuthorData() {
+		return authorData;
+	}
+
 	public void setMainApp(Main main) {
 
 		this.mainApp = main;
 
+	}
+
+	public void addAuthortoTable(Author author) {
+
+		if (author != null )
+			authorData.add(author);
 	}
 
 }

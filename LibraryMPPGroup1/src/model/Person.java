@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Person implements Serializable {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -6810694234729680398L;
 	public String id;
@@ -23,6 +23,21 @@ public class Person implements Serializable {
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public Address getAddress() {
+		return address;
 	}
 
 	public void setFirstName(String firstName) {
