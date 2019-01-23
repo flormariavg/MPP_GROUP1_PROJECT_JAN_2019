@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book implements Serializable{
 	private String title;
 	private String ISBNNumber;
 	private String authorList;
@@ -21,9 +22,9 @@ public class Book {
 	public void addBook() {
 		BookCopy bookCopy= new BookCopy("copyNumber");
 		bookCopies.add(bookCopy);
-		
-		
-		
+
+
+
 	}
 	public String getTitle() {
 		return title;

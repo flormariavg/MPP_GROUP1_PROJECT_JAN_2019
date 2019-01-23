@@ -9,9 +9,6 @@ import util.Functions;
 public class Administrator extends PersonGiveProfessor implements Role,  Serializable {
 
 	List<Integer> functionList;
-	public void addNewBook(Book book) {
-
-	}
 
 	public void editMember(Member member) {
 	}

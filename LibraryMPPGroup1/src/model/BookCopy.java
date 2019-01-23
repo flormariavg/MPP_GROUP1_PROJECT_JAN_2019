@@ -1,6 +1,8 @@
 package model;
 
-public class BookCopy {
+import java.io.Serializable;
+
+public class BookCopy implements Serializable{
 	private String copyNumber;
 	private Book book;
 
