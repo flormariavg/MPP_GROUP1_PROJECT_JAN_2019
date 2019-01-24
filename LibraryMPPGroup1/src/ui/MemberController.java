@@ -22,7 +22,6 @@ import model.Book;
 import model.CheckoutEntry;
 import model.CheckoutRecord;
 import model.Member;
-import model.PersonGiveProfessor;
 
 public class MemberController {
 
@@ -78,18 +77,12 @@ public class MemberController {
 		alert.setHeaderText("Search Member ID");
 		if (member != null) {
 
-			//
-			CheckoutBookService checkoutBookService = new CheckoutBookService();
 			//checkoutBookService.
 			CheckoutRecord checkoutRecord = member.getCheckoutRecord();
 			alert.setContentText("Member ID exist in System");
 			System.out.println(member);
 			if (checkoutRecord != null ) {
 				System.out.println(checkoutRecord);
-				List<CheckoutEntry> list1 = checkoutRecord.getCheckoutEntries();
-				for (CheckoutEntry checkoutEntry : list1) {
-					
-				}
 				System.out.println(checkoutRecord.getCheckoutEntries().toString());
 			}
 		} else{

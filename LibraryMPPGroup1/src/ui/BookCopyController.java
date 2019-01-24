@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.Book;
 import model.BookCopy;
 import model.CheckoutEntry;
+import util.Util;
 
 public class BookCopyController {
 

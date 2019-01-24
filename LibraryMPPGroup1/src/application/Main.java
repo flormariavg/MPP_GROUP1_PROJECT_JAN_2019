@@ -16,7 +16,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Author;
 import model.Member;
-import model.PersonGiveProfessor;
 import model.Role;
 import ui.AuthorController;
 import ui.BookController;
@@ -27,8 +26,6 @@ import ui.MemberAddDialogController;
 import ui.MemberController;
 import ui.MenuController;
 import ui.OverdueController;
-import ui.PersonEditDialogController;
-import ui.PersonOverviewController;
 import ui.RootLayoutController;
 import util.StringUtil;
 
@@ -44,27 +41,9 @@ public class Main extends Application {
 	private BorderPane rootLayout;
 	public HashMap<String, Role> roles;
 
-	private ObservableList<PersonGiveProfessor> personData = FXCollections.observableArrayList();
-
-	public Main() {
-		// Add some sample data
-		personData.add(new PersonGiveProfessor("Hans", "Muster"));
-		personData.add(new PersonGiveProfessor("Ruth", "Mueller"));
-		personData.add(new PersonGiveProfessor("Heinz", "Kurz"));
-		personData.add(new PersonGiveProfessor("Cornelia", "Meier"));
-		personData.add(new PersonGiveProfessor("Werner", "Meyer"));
-		personData.add(new PersonGiveProfessor("Lydia", "Kunz"));
-		personData.add(new PersonGiveProfessor("Anna", "Best"));
-		personData.add(new PersonGiveProfessor("Stefan", "Meier"));
-		personData.add(new PersonGiveProfessor("Martin", "Mueller"));
-	}
 
 	public Stage getPrimaryStage() {
 		return primaryStage;
-	}
-
-	public ObservableList<PersonGiveProfessor> getPersonData() {
-		return personData;
 	}
 
 	@Override
@@ -101,61 +80,6 @@ public class Main extends Application {
 		}
 	}
 
-
-	public void showPersonOverview() {
-		try {
-			// Load person overview.
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("../ui/PersonOverview.fxml"));
-			AnchorPane personOverview = (AnchorPane) loader.load();
-
-			// Set person overview into the center of root layout.
-			rootLayout.setCenter(personOverview);
-
-			PersonOverviewController controller = loader.getController();
-			controller.setMainApp(this);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Opens a dialog to edit details for the specified person. If the user clicks
-	 * OK, the changes are saved into the provided person object and true is
-	 * returned.
-	 *
-	 * @param person the person object to be edited
-	 * @return true if the user clicked OK, false otherwise.
-	 */
-	public boolean showPersonEditDialog(PersonGiveProfessor person) {
-		try {
-			// Load the fxml file and create a new stage for the popup dialog.
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("../ui/PersonEditDialog.fxml"));
-			AnchorPane page = (AnchorPane) loader.load();
-
-			// Create the dialog Stage.
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Edit Person");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-
-			// Set the person into the controller.
-			PersonEditDialogController controller = loader.getController();
-			controller.setDialogStage(dialogStage);
-			controller.setPerson(person);
-
-			// Show the dialog and wait until the user closes it
-			dialogStage.showAndWait();
-
-			return controller.isOkClicked();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
 
 	// Huong - Add methods of Login Screen
 
@@ -241,7 +165,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void showOverdue() {
 		try {
 			// Load person overview.

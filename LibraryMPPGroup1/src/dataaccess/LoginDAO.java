@@ -39,6 +39,7 @@ public class LoginDAO {
 
 			user = new Login("admin1", "111");
 			user.addRole(new Administrator());
+			user.addRole(new Librarian());
 			output.writeObject(user);
 
 			output.writeObject(null);
