@@ -1,20 +1,45 @@
 package ui;
 
+import java.util.List;
+
 import application.Main;
 import business.CheckoutBookService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.Book;
+import model.BookCopy;
+import model.Member;
 
 public class ChechoutBookOverviewController {
-	
+
 	// Reference to the main application.
-		private Main mainApp;
-		
-		@FXML
-		private TextField txtMemberId;
-		@FXML
-		private TextField txtISBN;
-		
+	private Main mainApp;
+
+	@FXML
+	private TextField txtMemberId;
+	@FXML
+	private TextField txtISBN;
+
+	@FXML
+	private Label lblMemberId;
+	@FXML
+	private Label lblFirstName;
+	@FXML
+	private Label lblLastName;
+	@FXML
+	private Label lblISBN;
+	@FXML
+	private Label lblTitle;
+	@FXML
+	private Label lblAuthor;
+	@FXML
+	private Label lblAvailableCopies;
+	@FXML
+	private Label lblNumberCopies;
+	@FXML
+	private Label lblNumberAvailableCopies;
+
 	/**
 	 * Is called by the main application to give a reference back to itself.
 	 *
@@ -23,24 +48,51 @@ public class ChechoutBookOverviewController {
 	public void setMainApp(Main mainApp) {
 		this.mainApp = mainApp;
 	}
-	
+
 	@FXML
 	private void handleChekoutBooks() {
-		String memberId= txtMemberId.getText();
-		String isbn= txtISBN.getText();
+		String memberId = txtMemberId.getText();
+		String isbn = txtISBN.getText();
 		System.out.println(txtMemberId.getText());
 		System.out.println(txtISBN.getText());
-		
-		CheckoutBookService bookService= new CheckoutBookService();
-		bookService.getBook(isbn);
-		bookService.getMember(memberId);
-		
-		System.out.println(bookService.getBook(isbn));
-		System.out.println(bookService.getMember(memberId));
-	
-		if(bookService.getBook(isbn)!=null && bookService.getMember(memberId)!=null) {
-			
-			
+
+		CheckoutBookService checkoutBookService = new CheckoutBookService();
+
+		if (checkoutBookService.getBook(isbn) != null && checkoutBookService.getMember(memberId) != null) {
+			Book book = checkoutBookService.getBook(isbn);
+			Member member = checkoutBookService.getMember(memberId);
+
+			int numCopies = 0, numCopiesAvailable = 0;
+			boolean available = true;
+
+			lblMemberId.setText(member.id);
+			lblFirstName.setText(member.getFirstName().toString());
+			lblLastName.setText(member.getLastName());
+			lblISBN.setText(book.getISBNNumber());
+			lblTitle.setText(book.getTitle());
+			// lblAuthor.setText(Arrays.toString(book.getAuthorList().toArray()));
+			List<BookCopy> bookCopies = book.getBooks();
+
+			System.out.println(bookCopies.size());
+			numCopies = bookCopies.size();
+			numCopiesAvailable = numCopies;
+			for (BookCopy bookCopy : bookCopies) {
+				available = true;
+				if (!bookCopy.isAvailability()) {
+					numCopiesAvailable--;
+					available = false;
+				}
+			}
+			if (!available)
+				lblAvailableCopies.setText("NO");
+			else
+				lblAvailableCopies.setText("YES");
+
+			System.out.println(numCopies);
+			System.out.println(numCopiesAvailable);
+			lblNumberCopies.setText(String.valueOf(numCopies));
+			lblNumberAvailableCopies.setText(String.valueOf(numCopiesAvailable));
+
 		}
 
 	}
