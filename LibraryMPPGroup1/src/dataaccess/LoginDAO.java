@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.List;
+
 import model.Administrator;
 import model.Librarian;
 import model.Login;
@@ -16,11 +18,8 @@ public class LoginDAO {
 	public static final String OUTPUT_DIR = System.getProperty("user.dir")
 			+ "\\src\\database\\LoginAccount.txt";
 
+	public static void createLoginAccountData (List<Login> userList) {
 
-	public static void createLoginAccountData () {
-
-
-	// create 2 accounts: Librarian and Administrator
 		try {
 
 			// Store Serialized User Object in File
@@ -28,20 +27,10 @@ public class LoginDAO {
 					OUTPUT_DIR);
 
 			ObjectOutputStream output = new ObjectOutputStream(fileOutputStream);
-			Login user = new Login("lib", "111");
-			user.addRole(new Librarian());
 
-			output.writeObject(user);
-			user = new Login("admin", "111");
-			user.addRole(new Administrator());
-			output.writeObject(user);
-
-
-			user = new Login("admin1", "111");
-			user.addRole(new Administrator());
-			user.addRole(new Librarian());
-			output.writeObject(user);
-
+			for (Login login : userList) {
+				output.writeObject(login);
+			}
 			output.writeObject(null);
 			output.close();
 
@@ -52,9 +41,6 @@ public class LoginDAO {
 		}
 
 	}
-
-
-
 	public static Login checkAccount(Login login) {
 
 		try {

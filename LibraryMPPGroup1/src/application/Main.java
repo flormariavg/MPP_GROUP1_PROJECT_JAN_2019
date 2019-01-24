@@ -90,7 +90,10 @@ public class Main extends Application {
 
 	public static void createData() {
 
-		LoginDAO.createLoginAccountData();
+		dataaccess.Main.createLoginAccountData();
+		dataaccess.Main.createBookData();
+		dataaccess.Main.createMemberData();
+
 	}
 
 	public void showLoginScreen() {
