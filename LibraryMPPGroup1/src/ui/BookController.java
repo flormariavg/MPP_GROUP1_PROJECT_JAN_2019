@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.Main;
+import business.AddBookCopyService;
 import business.BookService;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -84,7 +85,7 @@ public class BookController {
 		 );
 
 		 txtNumberOfCopy.setText("0");
-		 txtNumberOfCopy.setDisable(true);
+		// txtNumberOfCopy.setDisable(true);
 		// getList data from database
 		getBookListFromDatabase();
 
@@ -195,6 +196,11 @@ public class BookController {
 	}
 
 	@FXML
+	public void handleAddBookCopy() {
+		mainApp.showBookCopy();
+	}
+
+	@FXML
 	public void handleAddAuthor() {
 
 			Author tempAuthor = new Author();
@@ -228,6 +234,12 @@ public class BookController {
 			BookService bookService = new BookService();
 			if (bookService.createBook(book)) {
 				addNewBook(book);
+				int numberOfCopies = Integer.valueOf(txtNumberOfCopy.getText());
+				if (numberOfCopies >= 0) {
+					AddBookCopyService service = new AddBookCopyService();
+					service.addBookCopies(book, numberOfCopies);
+				}
+
 				alert.setContentText("Add book successfully!");
 
 			} else {

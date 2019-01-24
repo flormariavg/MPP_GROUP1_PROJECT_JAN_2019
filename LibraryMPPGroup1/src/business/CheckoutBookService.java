@@ -3,6 +3,7 @@ package business;
 import dataaccess.BookDAO;
 import dataaccess.MemberDAO;
 import model.Book;
+import model.CheckoutRecord;
 import model.Member;
 
 public class CheckoutBookService {
@@ -34,7 +35,7 @@ public class CheckoutBookService {
 	public Book getBook(String isbn) {
 		return bookDAO.findByISBN(isbn);
 	}
-	
+
 	public boolean createCheckoutRecord(Member member, Book book) {
 		if(bookDAO.update(book)) {
 			memberDAO.update(member);
@@ -42,6 +43,12 @@ public class CheckoutBookService {
 		}else
 		return false ;
 	}
+//
+//	public CheckoutRecord getCheckoutRecord (String memberID) {
+//
+//
+//
+//	}
 
 
 }

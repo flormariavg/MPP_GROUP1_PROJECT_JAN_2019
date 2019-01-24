@@ -40,20 +40,20 @@ public class CheckoutEntry implements Serializable{
 	@Override
 	public String toString() {
 		StringBuffer str = new StringBuffer();
-		str.append("|	Checkout Date	|	DueDate		|	BookCopy	|	status	|");
-		str.append("|	" + getCheckoutDate() +"	|	" + getDueDate()	+	"	|	" + getBookCopy().getCopyNumber() + " 	|	" + getStatus() + "	|");
+
+		str.append("\n|	" + getCheckoutDate() +	"	|	" + getDueDate()	+	"	|	" + ((getBookCopy()==null)? "no data" : getBookCopy().getCopyNumber()) + " 	|	" + getStatus() + "	|");
 
 		return str.toString();
 	}
-	
+
 	public int getBookCopyNumber() {
 		return bookCopy!=null?bookCopy.getCopyNumber():0;
 	}
-	
+
 	public String getDueDateFormatted() {
 		return dueDate.format(DateTimeFormatter.ofPattern("MM.dd.yyyy"));
 	}
-	
+
 	public String getCheckoutDateFormatted() {
 		return checkoutDate.format(DateTimeFormatter.ofPattern("MM.dd.yyyy"));
 	}

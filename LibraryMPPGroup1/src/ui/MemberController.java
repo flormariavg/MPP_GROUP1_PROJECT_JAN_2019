@@ -4,6 +4,7 @@ package ui;
 import java.util.List;
 
 import application.Main;
+import business.CheckoutBookService;
 import business.MemberService;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,6 +19,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
 import model.Book;
+import model.CheckoutEntry;
 import model.CheckoutRecord;
 import model.Member;
 import model.PersonGiveProfessor;
@@ -75,11 +77,19 @@ public class MemberController {
 		alert.setTitle("Search Member");
 		alert.setHeaderText("Search Member ID");
 		if (member != null) {
+
+			//
+			CheckoutBookService checkoutBookService = new CheckoutBookService();
+			//checkoutBookService.
 			CheckoutRecord checkoutRecord = member.getCheckoutRecord();
 			alert.setContentText("Member ID exist in System");
 			System.out.println(member);
 			if (checkoutRecord != null ) {
 				System.out.println(checkoutRecord);
+				List<CheckoutEntry> list1 = checkoutRecord.getCheckoutEntries();
+				for (CheckoutEntry checkoutEntry : list1) {
+					
+				}
 				System.out.println(checkoutRecord.getCheckoutEntries().toString());
 			}
 		} else{
