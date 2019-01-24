@@ -1,6 +1,5 @@
 package ui;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -14,11 +13,7 @@ import model.Role;
 import util.Functions;
 import util.StringUtil;
 
-
 public class MenuController {
-
-
-
 
 	private Main mainApp;
 
@@ -31,13 +26,9 @@ public class MenuController {
 	@FXML
 	private Button checkoutBookBtn;
 
-
-
 	private HashMap<String, Role> roles;
 	public void setMainApp(Main main) {
-
 		this.mainApp = main;
-
 	}
 
 	public void setFuntionList (HashMap<String, Role> roles) {
@@ -47,7 +38,6 @@ public class MenuController {
 		addNewMemberBtn.setDisable(true);
 		checkoutBookBtn.setDisable(true);
 		if (roles != null) {
-
 			  Set<String> keys = roles.keySet();
 		        for(String key: keys){
 		            if (key.equals(StringUtil.ADMIN_ROLE)) {
@@ -105,8 +95,15 @@ public class MenuController {
 		mainApp.showAddNewBook();
 	}
 
+	@FXML
 	public void handleAddNewLibraryMember() {
 		mainApp.showMemberOverview();
 	}
+	
+	@FXML
+	public void handleOverdue() {
+		mainApp.showOverdue();
+	}
+	
 }
 

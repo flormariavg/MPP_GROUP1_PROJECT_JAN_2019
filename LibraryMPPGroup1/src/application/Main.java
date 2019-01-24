@@ -2,14 +2,12 @@ package application;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import dataaccess.LoginDAO;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -17,7 +15,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Author;
-import model.Login;
 import model.Member;
 import model.PersonGiveProfessor;
 import model.Role;
@@ -29,9 +26,10 @@ import ui.LoginController;
 import ui.MemberAddDialogController;
 import ui.MemberController;
 import ui.MenuController;
-import ui.RootLayoutController;
+import ui.OverdueController;
 import ui.PersonEditDialogController;
 import ui.PersonOverviewController;
+import ui.RootLayoutController;
 import util.StringUtil;
 
 /**
@@ -227,7 +225,6 @@ public class Main extends Application {
 		}
 	}
 
-
 	public void showBookCopy() {
 		try {
 			// Load person overview.
@@ -239,6 +236,23 @@ public class Main extends Application {
 			primaryStage.setTitle(StringUtil.TITLE_BOOK_COPY);
 			// primaryStage.show();
 			BookCopyController controller = loader.getController();
+			controller.setMainApp(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void showOverdue() {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("../ui/Overdue.fxml"));
+			AnchorPane bookOverview = (AnchorPane) loader.load();
+			// Set person overview into the center of root layout.
+			rootLayout.setCenter(bookOverview);
+			primaryStage.setTitle(StringUtil.TITLE_BOOK_COPY);
+			// primaryStage.show();
+			OverdueController controller = loader.getController();
 			controller.setMainApp(this);
 		} catch (IOException e) {
 			e.printStackTrace();

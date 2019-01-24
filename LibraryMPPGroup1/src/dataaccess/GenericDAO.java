@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class GenericDAO<E> {
 
-	public static final String OUTPUT_DIR = System.getProperty("user.dir") + "\\src\\database\\";
+	public static final String OUTPUT_DIR = System.getProperty("user.dir") + "/src/database/";
 
 	public boolean create(E object) {
 		try {

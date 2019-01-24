@@ -18,13 +18,8 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Member Manager">
             <items>
-              <MenuItem mnemonicParsing="false" text="New Library Member" />
-                  <MenuItem mnemonicParsing="false" text="Overdue" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#handleAddNewLibraryMember" text="New Library Member" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleOverdue" text="Overdue" />
             </items>
           </Menu>
         </menus>

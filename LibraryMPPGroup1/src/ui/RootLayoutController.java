@@ -39,6 +39,16 @@ public class RootLayoutController {
 
 	@FXML
 	public void handleAddNewBook() {
-		mainApp.showBookCopy();
+		mainApp.showAddNewBook();
+	}
+
+	@FXML
+	public void handleAddNewLibraryMember() {
+		mainApp.showMemberOverview();
+	}
+	
+	@FXML
+	public void handleOverdue() {
+		mainApp.showOverdue();
 	}
 }

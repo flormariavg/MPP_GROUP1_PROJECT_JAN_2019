@@ -104,12 +104,10 @@ public class ChechoutBookOverviewController {
 				}else {
 					if(bookCopyA==null) {
 						bookCopy.setAvailability(false);
+						bookCopy.setIsbn(book.getISBNNumber());
 						numCopiesAvailable--;
 						bookCopyA=bookCopy;
-						
-						
 					}
-						
 				}
 			}
 			

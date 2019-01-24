@@ -12,7 +12,9 @@ public class BookCopy implements Serializable{
 	
 	private int copyNumber;
 	
-	private Book book;
+	private String isbn;
+	
+	//private Book book;
 	
 	private boolean availability;
 
@@ -25,9 +27,9 @@ public class BookCopy implements Serializable{
 		return copyNumber;
 	}
 
-	public Book getBook() {
-		return book;
-	}
+//	public Book getBook() {
+//		return book;
+//	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -43,6 +45,14 @@ public class BookCopy implements Serializable{
 
 	public void setAvailability(boolean availability) {
 		this.availability = availability;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 }
