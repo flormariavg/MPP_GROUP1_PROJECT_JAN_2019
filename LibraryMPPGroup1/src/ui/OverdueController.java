@@ -13,7 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import util.Util;
 
 public class OverdueController {
 
@@ -46,7 +48,9 @@ public class OverdueController {
 	@FXML
 	public void btnSearch(ActionEvent event) throws IOException {
 		List<OverdueData> data = service.searchBookOverdue(isbn.getText());
-		if(data!=null) {
+		System.out.println(data);
+		if(data!=null && !data.isEmpty()) {
+		//	if(data.get)
 			isbnColumn.setCellValueFactory(new PropertyValueFactory<OverdueData, String>("isbn"));
 			bookTitleColumn.setCellValueFactory(new PropertyValueFactory<OverdueData, String>("bookTitle"));
 			copyNumberColumn.setCellValueFactory(new PropertyValueFactory<OverdueData, String>("copyNumber"));
@@ -54,6 +58,8 @@ public class OverdueController {
 			duedateColumn.setCellValueFactory(new PropertyValueFactory<OverdueData, String>("duedate"));
 			bookCopyTable.getItems().setAll(data);
 		}
+		else
+			Util.showAlert(AlertType.INFORMATION, "INFO", "Copies not available", "There aren't copies for the book ");
 	}
 
 	private Main mainApp;

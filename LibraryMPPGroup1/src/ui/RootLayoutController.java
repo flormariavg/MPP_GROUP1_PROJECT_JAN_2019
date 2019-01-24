@@ -51,4 +51,9 @@ public class RootLayoutController {
 	public void handleOverdue() {
 		mainApp.showOverdue();
 	}
+	
+	@FXML
+	private void handleLogout() {
+		mainApp.showLoginScreen();
+	}
 }

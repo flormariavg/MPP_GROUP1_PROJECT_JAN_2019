@@ -82,7 +82,7 @@ public class ChechoutBookOverviewController {
 			
 
 			int numCopies = 0, numCopiesAvailable = 0;
-			boolean available = true;
+			boolean available = false;
 			BookCopy bookCopyA=null;
 
 			lblMemberId.setText(member.id);
