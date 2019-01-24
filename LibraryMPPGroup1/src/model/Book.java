@@ -40,7 +40,7 @@ public class Book implements Serializable{
 	}
 
 	public void addBook(int copyNumber) {
-		BookCopy bookCopy= new BookCopy(copyNumber);
+		BookCopy bookCopy= new BookCopy(copyNumber, true);
 		bookCopies.add(bookCopy);
 		}
 

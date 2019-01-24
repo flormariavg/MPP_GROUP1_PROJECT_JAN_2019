@@ -18,7 +18,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="400.0" text="Add new book" />
+            <Button mnemonicParsing="false" onAction="#handleAddNewBook" prefHeight="150.0" prefWidth="400.0" text="Add new book" />
             <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="400.0" text="New Library Member" GridPane.columnIndex="1" />
             <Button mnemonicParsing="false" onAction="#handleBookCopy" prefHeight="150.0" prefWidth="400.0" text="Add new book copy" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" onAction="#handleChekoutBook" prefHeight="150.0" prefWidth="400.0" text="Checkout a book" GridPane.rowIndex="2" />

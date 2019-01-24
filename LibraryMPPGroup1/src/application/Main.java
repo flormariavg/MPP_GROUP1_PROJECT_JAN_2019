@@ -71,8 +71,7 @@ public class Main extends Application {
 
 		initRootLayout();
 		//showLoginScreen();
-		//showMemberOverview();
-		showAddNewBook();
+		showMenu();
 
 	}
 

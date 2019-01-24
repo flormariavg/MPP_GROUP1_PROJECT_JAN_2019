@@ -17,12 +17,6 @@ public class BookService {
 		return (List<Book>) bookDAO.findAll();
 	}
 
-//	public static void main(String[] args) {
-//		//		System.out.println(bookDAO.findById("ABCD", Book.class));
-//
-//		BookService service = new BookService();
-//		Book book = new Book("title1","1234", null, "abc");
-//		System.out.println(service.createBook(book));
-//	}
+
 
 }

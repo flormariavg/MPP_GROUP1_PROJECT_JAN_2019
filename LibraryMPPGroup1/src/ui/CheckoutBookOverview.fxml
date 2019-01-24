@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ChechoutBookOverviewController">
    <children>
-      <SplitPane dividerPositions="0.6175231676495366" layoutX="14.0" layoutY="14.0" prefHeight="784.0" prefWidth="1189.0">
+      <SplitPane dividerPositions="0.6175231676495366" layoutX="14.0" layoutY="14.0" prefHeight="784.0" prefWidth="1189.0" styleClass="background">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="740.0" prefWidth="707.0">
                <children>
@@ -55,18 +55,21 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="Title" GridPane.rowIndex="1" />
                         <Label text="Author" GridPane.rowIndex="2" />
                         <Label text="Number of Copies" GridPane.rowIndex="4" />
                         <Label text="Available Copies" GridPane.rowIndex="3" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="lblTitle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lblAuthor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lblAvailableCopies" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="lblNumberCopies" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label text="ISBN" />
-                        <Label text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="lblISBN" GridPane.columnIndex="1" />
+                        <Label text="Number of Copies Available" GridPane.rowIndex="5" />
+                        <Label fx:id="lblNumberAvailableCopies" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <Label layoutX="34.0" layoutY="279.0" text="Book Details" />
@@ -84,9 +87,9 @@
                         <Label text="Member ID" />
                         <Label text="First Name" GridPane.rowIndex="1" />
                         <Label text="Last Name" GridPane.rowIndex="2" />
-                        <Label text="Label" GridPane.columnIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lblMemberId" GridPane.columnIndex="1" />
+                        <Label fx:id="lblFirstName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lblLastName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                   <Label layoutX="34.0" layoutY="38.0" text="Member Details" />

@@ -42,6 +42,7 @@ public class BookDAO extends GenericDAO<Book> {
 			actualNumberOfCopies++;
 			book.addBook(actualNumberOfCopies);
 		}
+		update(book);
 		return true;
 	}
 

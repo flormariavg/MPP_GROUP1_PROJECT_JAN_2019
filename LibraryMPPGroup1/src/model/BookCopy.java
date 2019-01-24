@@ -13,9 +13,12 @@ public class BookCopy implements Serializable{
 	private int copyNumber;
 	
 	private Book book;
+	
+	private boolean availability;
 
-	public BookCopy(int copyNumber) {
+	public BookCopy(int copyNumber, boolean availability) {
 		this.copyNumber = copyNumber;
+		this.availability=availability;
 	}
 
 	public int getCopyNumber() {
@@ -24,6 +27,22 @@ public class BookCopy implements Serializable{
 
 	public Book getBook() {
 		return book;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public boolean isAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(boolean availability) {
+		this.availability = availability;
 	}
 
 }

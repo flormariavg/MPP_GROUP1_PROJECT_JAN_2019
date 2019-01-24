@@ -2,7 +2,6 @@ package business;
 
 import dataaccess.BookDAO;
 import dataaccess.MemberDAO;
-import model.Address;
 import model.Book;
 import model.Member;
 
@@ -35,18 +34,13 @@ public class CheckoutBookService {
 	public Book getBook(String isbn) {
 		return bookDAO.findByISBN(isbn);
 	}
-	public static void main(String[] args) {
-		CheckoutBookService service = new CheckoutBookService();
-
-		Member member= new Member("123","Flor", "Vargas", "999999", new Address("Street", "555", "Farfield", "Iowa"), "123");
-		service.createMember(member);
-		System.out.println(service.getMember("123"));
-
-		Book book= new Book("123", "Title",null , "availability", 21);
-		service.createBook(book);
-		System.out.println(service.getBook("1234"));
-
-
+	
+	public boolean createCheckoutRecord(Member member, Book book) {
+		if(bookDAO.update(book)) {
+			memberDAO.update(member);
+			return true;
+		}else
+		return false ;
 	}
 
 
