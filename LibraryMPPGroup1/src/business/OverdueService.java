@@ -27,6 +27,7 @@ public class OverdueService {
 			for (Member member : members) {
 				if (member.getCheckoutRecord() != null && member.getCheckoutRecord().getCheckoutEntries() != null) {
 					for (CheckoutEntry ce : member.getCheckoutRecord().getCheckoutEntries()) {
+						if(isbn.equals(ce.getBookCopy().getIsbn()))
 						data.add(
 								new OverdueData(isbn, book.getTitle(), String.valueOf(ce.getBookCopy().getCopyNumber()),
 										member.getLastName() + " " + member.getFirstName(), ce.getDueDateFormatted()));

@@ -75,10 +75,10 @@ public class ChechoutBookOverviewController {
 		System.out.println(txtISBN.getText());
 
 		CheckoutBookService checkoutBookService = new CheckoutBookService();
-
-		if (checkoutBookService.getBook(isbn) != null && checkoutBookService.getMember(memberId) != null) {
-			Book book = checkoutBookService.getBook(isbn);
-			Member member = checkoutBookService.getMember(memberId);
+		Book book = checkoutBookService.getBook(isbn);
+		Member member = checkoutBookService.getMember(memberId);
+		if (book != null && member != null) {
+			
 
 			int numCopies = 0, numCopiesAvailable = 0;
 			boolean available = true;
@@ -145,6 +145,8 @@ public class ChechoutBookOverviewController {
 			
 	        checkoutEntryTable.getItems().setAll(checkoutRecord.getCheckoutEntries());
 	        
+		}else {
+			Util.showAlert(AlertType.WARNING, "Warning","", "Member or Book not found");
 		}
 	}
 }
