@@ -6,10 +6,15 @@ import java.util.List;
 import application.Main;
 import business.CheckoutBookService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Book;
 import model.BookCopy;
+import model.CheckoutEntry;
 import model.CheckoutRecord;
 import model.Member;
 
@@ -41,7 +46,18 @@ public class ChechoutBookOverviewController {
 	private Label lblNumberCopies;
 	@FXML
 	private Label lblNumberAvailableCopies;
-
+	
+	@FXML
+	private TableView<CheckoutEntry> checkoutEntryTable;
+	@FXML
+	private TableColumn<CheckoutEntry, String> bookCopyNumberColumn;
+	@FXML
+	private TableColumn<CheckoutEntry, String> checkoutDateColumn;
+	@FXML
+	private TableColumn<CheckoutEntry, String> dueDateColumn;
+	@FXML
+	private TableColumn<CheckoutEntry, String> statusColumn;
+	
 	/**
 	 * Is called by the main application to give a reference back to itself.
 	 *
@@ -96,11 +112,7 @@ public class ChechoutBookOverviewController {
 						
 				}
 			}
-			if (!available)
-				lblAvailableCopies.setText("NO");
-			else
-				lblAvailableCopies.setText("YES");
-
+			
 			System.out.println(numCopies);
 			System.out.println(numCopiesAvailable);
 			lblNumberCopies.setText(String.valueOf(numCopies));
@@ -113,16 +125,28 @@ public class ChechoutBookOverviewController {
 			else
 				checkoutRecord= new CheckoutRecord();
 			
-			int maxDay=book.getMaximumCheckOutLength();
-			LocalDate dueDate= LocalDate.now().plusDays(maxDay);
-			checkoutRecord.addCheckOutEntry(LocalDate.now(), dueDate, "available", bookCopyA);
+			if (!available) {
+				lblAvailableCopies.setText("NO");
+				Util.showAlert(AlertType.WARNING, "Warning", "Copies not available", "There aren't copies for the book : "+book.getTitle());
+			}
+			else {
+				lblAvailableCopies.setText("YES");
+				
+				int maxDay=book.getMaximumCheckOutLength();
+				LocalDate dueDate= LocalDate.now().plusDays(maxDay);
+				checkoutRecord.addCheckOutEntry(LocalDate.now(), dueDate, "Borrowed", bookCopyA);
+				
+				member.setCheckoutRecord(checkoutRecord);
+				checkoutBookService.createCheckoutRecord(member, book);
+			}
 			
-			member.setCheckoutRecord(checkoutRecord);
-			checkoutBookService.createCheckoutRecord(member, book);
-
-
+			bookCopyNumberColumn.setCellValueFactory(new PropertyValueFactory<CheckoutEntry, String>("bookCopyNumber"));
+			checkoutDateColumn.setCellValueFactory(new PropertyValueFactory<CheckoutEntry, String>("checkoutDateFormatted"));
+			dueDateColumn.setCellValueFactory(new PropertyValueFactory<CheckoutEntry, String>("dueDateFormatted"));
+			statusColumn.setCellValueFactory(new PropertyValueFactory<CheckoutEntry, String>("status"));
+			
+	        checkoutEntryTable.getItems().setAll(checkoutRecord.getCheckoutEntries());
+	        
 		}
-
 	}
-
 }

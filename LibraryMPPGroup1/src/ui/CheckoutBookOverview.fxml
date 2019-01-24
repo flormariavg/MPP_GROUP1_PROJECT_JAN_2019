@@ -31,13 +31,12 @@
                      </children>
                   </GridPane>
                   <Label layoutX="18.0" layoutY="34.0" text="Checkout Book" />
-                  <TableView layoutX="19.0" layoutY="241.0" prefHeight="479.0" prefWidth="696.0">
+                  <TableView fx:id="checkoutEntryTable" layoutX="19.0" layoutY="241.0" prefHeight="479.0" prefWidth="696.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Book" />
-                      <TableColumn prefWidth="208.0" text="Book Copy Number" />
-                        <TableColumn prefWidth="179.0" text="Checkout Date" />
-                        <TableColumn prefWidth="153.0" text="Due Date" />
-                        <TableColumn text="Status" />
+                      <TableColumn fx:id="bookCopyNumberColumn" prefWidth="208.0" text="Book Copy Number" />
+                        <TableColumn fx:id="checkoutDateColumn" prefWidth="179.0" text="Checkout Date" />
+                        <TableColumn fx:id="dueDateColumn" prefWidth="153.0" text="Due Date" />
+                        <TableColumn fx:id="statusColumn" text="Status" />
                     </columns>
                   </TableView>
                </children>

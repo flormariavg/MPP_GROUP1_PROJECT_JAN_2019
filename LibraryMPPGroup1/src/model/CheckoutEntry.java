@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CheckoutEntry implements Serializable{
 	/**
@@ -43,6 +44,18 @@ public class CheckoutEntry implements Serializable{
 		str.append("|	" + getCheckoutDate() +"	|	" + getDueDate()	+	"	|	" + getBookCopy().getCopyNumber() + " 	|	" + getStatus() + "	|");
 
 		return str.toString();
+	}
+	
+	public int getBookCopyNumber() {
+		return bookCopy!=null?bookCopy.getCopyNumber():0;
+	}
+	
+	public String getDueDateFormatted() {
+		return dueDate.format(DateTimeFormatter.ofPattern("MM.dd.yyyy"));
+	}
+	
+	public String getCheckoutDateFormatted() {
+		return checkoutDate.format(DateTimeFormatter.ofPattern("MM.dd.yyyy"));
 	}
 
 }
