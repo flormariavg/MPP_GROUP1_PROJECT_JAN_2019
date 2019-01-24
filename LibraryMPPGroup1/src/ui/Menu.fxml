@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MenuController">
    <children>
-      <GridPane layoutX="151.0" layoutY="152.0" prefHeight="542.0" prefWidth="955.0">
+      <GridPane layoutX="162.0" layoutY="-19.0" prefHeight="542.0" prefWidth="955.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -18,10 +18,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#handleAddNewBook" prefHeight="150.0" prefWidth="400.0" text="Add new book" />
-            <Button mnemonicParsing="false" onAction="#handleAddNewLibraryMember" prefHeight="150.0" prefWidth="400.0" text="New Library Member" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" onAction="#handleBookCopy" prefHeight="150.0" prefWidth="400.0" text="Add new book copy" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#handleChekoutBook" prefHeight="150.0" prefWidth="400.0" text="Checkout a book" GridPane.rowIndex="2" />
+            <Button fx:id="addNewBookBtn" mnemonicParsing="false" onAction="#handleAddNewBook" prefHeight="150.0" prefWidth="400.0" text="Add new book" />
+            <Button fx:id="addNewMemberBtn" mnemonicParsing="false" onAction="#handleAddNewLibraryMember" prefHeight="150.0" prefWidth="400.0" text="New Library Member" GridPane.columnIndex="1" />
+            <Button fx:id="checkoutBookBtn" mnemonicParsing="false" onAction="#handleChekoutBook" prefHeight="150.0" prefWidth="400.0" text="Checkout a book" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" prefHeight="150.0" prefWidth="400.0" text="Overdue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
