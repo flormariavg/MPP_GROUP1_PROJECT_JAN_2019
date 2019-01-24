@@ -5,18 +5,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ChechoutBookOverviewController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ChechoutBookOverviewController">
    <children>
-      <SplitPane dividerPositions="0.6175231676495366" layoutX="14.0" layoutY="14.0" prefHeight="784.0" prefWidth="1189.0">
+      <SplitPane dividerPositions="0.5930918281381634" layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="1000.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="740.0" prefWidth="707.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="683.0">
                <children>
-                  <GridPane layoutX="18.0" layoutY="55.0" prefHeight="171.0" prefWidth="670.0">
+                  <GridPane layoutX="18.0" layoutY="55.0" prefHeight="153.0" prefWidth="558.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="108.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="246.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="10.0" prefWidth="49.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="274.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="10.0" prefWidth="53.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="211.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -31,7 +31,7 @@
                      </children>
                   </GridPane>
                   <Label layoutX="18.0" layoutY="34.0" text="Checkout Book" />
-                  <TableView fx:id="checkoutEntryTable" layoutX="19.0" layoutY="241.0" prefHeight="479.0" prefWidth="696.0">
+                  <TableView fx:id="checkoutEntryTable" layoutX="19.0" layoutY="223.0" prefHeight="386.0" prefWidth="547.0">
                     <columns>
                       <TableColumn fx:id="bookCopyNumberColumn" prefWidth="208.0" text="Book Copy Number" />
                         <TableColumn fx:id="checkoutDateColumn" prefWidth="179.0" text="Checkout Date" />
@@ -41,12 +41,12 @@
                   </TableView>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="782.0" prefWidth="419.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="454.0">
                <children>
-                  <GridPane layoutX="34.0" layoutY="342.0" prefHeight="336.0" prefWidth="371.0">
+                  <GridPane layoutX="16.0" layoutY="312.0" prefHeight="256.0" prefWidth="459.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="139.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="183.0" minWidth="10.0" prefWidth="161.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="304.0" minWidth="0.0" prefWidth="212.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="459.0" minWidth="10.0" prefWidth="247.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -71,8 +71,8 @@
                         <Label fx:id="lblNumberAvailableCopies" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
-                  <Label layoutX="34.0" layoutY="279.0" text="Book Details" />
-                  <GridPane layoutX="34.0" layoutY="92.0" prefHeight="138.0" prefWidth="371.0">
+                  <Label layoutX="26.0" layoutY="251.0" text="Book Details" />
+                  <GridPane layoutY="88.0" prefHeight="142.0" prefWidth="425.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

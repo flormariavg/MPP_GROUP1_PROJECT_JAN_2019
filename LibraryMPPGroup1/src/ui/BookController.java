@@ -83,7 +83,7 @@ public class BookController {
 		 cb.setItems(FXCollections.observableArrayList(
 		     21,7)
 		 );
-
+		 cb.getSelectionModel().selectFirst();
 		 txtNumberOfCopy.setText("0");
 		// txtNumberOfCopy.setDisable(true);
 		// getList data from database
@@ -284,9 +284,9 @@ public class BookController {
 			}
 		}
 
-//		if (cb.selectionModelProperty().get == null || txtMaximumCheckoutLenght.getText().length() == 0) {
-//			errorMessage += "No valid MaximumCheckoutLenght!\n";
-//		}
+		if (cb.getSelectionModel().getSelectedIndex() < 0 || cb.getSelectionModel() == null || cb.getSelectionModel().getSelectedItem()== null) {
+			errorMessage += "No valid MaximumCheckoutLenght!\n";
+		}
 
 		if (errorMessage.length() == 0) {
 			return true;

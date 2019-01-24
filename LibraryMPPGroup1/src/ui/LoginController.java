@@ -5,7 +5,9 @@ import business.LoginService;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import model.Login;
+import util.Util;
 
 public class LoginController {
 	@FXML
@@ -21,13 +23,14 @@ public class LoginController {
 		LoginService loginService= new LoginService();
 		login = loginService.login(login) ;
 		if(login != null) {
-
+		
 			mainApp.showMenu(login.getRoles());
 			//mainApp.showAddNewBook();
 
 
 		} else {
-			System.out.println("Login fail");
+			Util.showAlert(AlertType.ERROR, "Error", "Login fail", "please try again!");
+
 
 		}}
 

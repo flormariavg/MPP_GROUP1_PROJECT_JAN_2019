@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MenuController">
    <children>
-      <GridPane layoutX="143.0" layoutY="163.0" prefHeight="546.0" prefWidth="934.0" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
+      <GridPane layoutX="287.0" layoutY="116.0" prefHeight="368.0" prefWidth="519.0" AnchorPane.bottomAnchor="116.0" AnchorPane.leftAnchor="287.0" AnchorPane.rightAnchor="194.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -18,13 +18,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="addNewBookBtn" mnemonicParsing="false" onAction="#handleAddNewBook" prefHeight="150.0" prefWidth="400.0" text="Add new book" />
-            <Button fx:id="addNewMemberBtn" mnemonicParsing="false" onAction="#handleAddNewLibraryMember" prefHeight="150.0" prefWidth="400.0" text="New Library Member" GridPane.columnIndex="1" />
-            <Button fx:id="checkoutBookBtn" mnemonicParsing="false" onAction="#handleChekoutBook" prefHeight="150.0" prefWidth="400.0" text="Checkout a book" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#handleOverdue" prefHeight="150.0" prefWidth="400.0" text="Overdue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="addNewBookBtn" mnemonicParsing="false" onAction="#handleAddNewBook" prefHeight="111.0" prefWidth="215.0" text="Add new book" />
+            <Button fx:id="addNewMemberBtn" mnemonicParsing="false" onAction="#handleAddNewLibraryMember" prefHeight="111.0" prefWidth="213.0" text="New Library Member" GridPane.columnIndex="1" />
+            <Button fx:id="checkoutBookBtn" mnemonicParsing="false" onAction="#handleChekoutBook" prefHeight="103.0" prefWidth="218.0" text="Checkout a book" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#handleOverdue" prefHeight="108.0" prefWidth="212.0" text="Overdue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Label layoutX="417.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="326.0" styleClass="lable-title" text="Library System">
+      <Label layoutX="392.0" layoutY="34.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="326.0" styleClass="lable-title" text="Library System">
          <font>
             <Font name="System Bold" size="43.0" />
          </font>
