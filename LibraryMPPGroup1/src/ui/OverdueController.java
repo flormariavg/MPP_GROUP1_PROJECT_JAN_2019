@@ -1,6 +1,8 @@
 package ui;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import application.Main;
@@ -47,7 +49,17 @@ public class OverdueController {
 	}
 	@FXML
 	public void btnSearch(ActionEvent event) throws IOException {
-		List<OverdueData> data = service.searchBookOverdue(isbn.getText());
+		//Uncomment this for validate duedate
+		//List<OverdueData> data = service.searchBookOverdue(isbn.getText());
+		
+		//Comment this for validate duedate
+		List<OverdueData> dataAux = service.searchBookOverdue(isbn.getText());
+		List<OverdueData> data = new ArrayList<>();
+		for (OverdueData overdueData : dataAux) {
+			if(overdueData.getDuedateDate().compareTo(LocalDate.now())>0)
+				data.add(overdueData);
+		}
+		
 		System.out.println(data);
 		if(data!=null && !data.isEmpty()) {
 		//	if(data.get)

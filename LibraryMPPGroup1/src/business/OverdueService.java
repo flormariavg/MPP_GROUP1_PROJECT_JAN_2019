@@ -32,7 +32,7 @@ public class OverdueService {
 							if(isbn.equals(ce.getBookCopy().getIsbn()))
 								data.add(
 								new OverdueData(isbn, book.getTitle(), String.valueOf(ce.getBookCopy().getCopyNumber()),
-										member.getLastName() + " " + member.getFirstName(), ce.getDueDateFormatted()));
+										member.getLastName() + " " + member.getFirstName(), ce.getDueDateFormatted(), ce.getDueDate()));
 					}
 				}
 			}
