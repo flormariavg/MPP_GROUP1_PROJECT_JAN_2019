@@ -1,9 +1,6 @@
 package dataaccess;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +40,6 @@ public class Main {
 
 	}
 	public static void createLoginAccountData () {
-
 
 			List<Login> loginList = new ArrayList<>();
 			Login user = new Login("lib", "111");
