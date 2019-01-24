@@ -119,8 +119,7 @@ public class ChechoutBookOverviewController {
 			
 			member.setCheckoutRecord(checkoutRecord);
 			checkoutBookService.createCheckoutRecord(member, book);
-			
-			
+
 
 		}
 
