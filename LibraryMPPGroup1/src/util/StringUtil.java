@@ -8,5 +8,8 @@ public interface StringUtil {
 	public static String TITLE_ADD_NEW_BOOK = "Add new book";
 	public static String TITLE_ADD_AUTHOR = "Add Author";
 	public static String TITLE_ADD_MEMBER = "Add Member";
+	public static String ADMIN_ROLE = "ADMIN";
+	public static String LIBRARIAN_ROLE = " LIBRARIAN";
+
 
 }

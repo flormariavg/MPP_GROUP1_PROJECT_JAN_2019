@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import util.Functions;
+import util.StringUtil;
 
 public class Administrator extends Person implements Role,  Serializable {
 
@@ -27,6 +28,12 @@ public class Administrator extends Person implements Role,  Serializable {
 	public List<Integer> getListFunction() {
 
 		return functionList;
+	}
+
+	@Override
+	public String getRoleName() {
+		// TODO Auto-generated method stub
+		return StringUtil.ADMIN_ROLE;
 	}
 
 }

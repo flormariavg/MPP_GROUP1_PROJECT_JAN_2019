@@ -5,7 +5,7 @@ import java.util.List;
 public interface Role {
 
 	public abstract List<Integer> getListFunction();
-
+	public abstract String getRoleName();
 
 
 }

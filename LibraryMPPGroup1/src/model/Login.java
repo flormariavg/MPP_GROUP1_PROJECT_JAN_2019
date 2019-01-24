@@ -2,17 +2,19 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Login implements Serializable{
 	private String userName;
 	private String password;
-	private List<Role> roles;
+	private HashMap<String, Role> roles;
+
 
 	public Login(String userName, String password) {
 		this.userName = userName;
 		this.password = password;
-		roles = new ArrayList<>();
+		roles = new HashMap<>();
 	}
 
 	public String getUserName() {
@@ -23,15 +25,15 @@ public class Login implements Serializable{
 		return password;
 	}
 
-	public List<Role> getRoles() {
+	public HashMap<String, Role> getRoles() {
 		return roles;
 	}
 
 	public void addRole(Role role) {
 		if (roles == null) {
-			roles = new ArrayList<>();
+			roles = new HashMap<>();
 		}
-		roles.add(role);
+		roles.put(role.getRoleName(), role);
 	}
 
 

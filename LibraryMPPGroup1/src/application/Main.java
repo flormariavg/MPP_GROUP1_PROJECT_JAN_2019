@@ -1,6 +1,8 @@
 package application;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 import dataaccess.LoginDAO;
 import javafx.application.Application;
@@ -15,8 +17,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Author;
+import model.Login;
 import model.Member;
 import model.PersonGiveProfessor;
+import model.Role;
 import ui.AuthorController;
 import ui.BookController;
 import ui.BookCopyController;
@@ -25,9 +29,9 @@ import ui.LoginController;
 import ui.MemberAddDialogController;
 import ui.MemberController;
 import ui.MenuController;
+import ui.RootLayoutController;
 import ui.PersonEditDialogController;
 import ui.PersonOverviewController;
-import ui.RootLayoutController;
 import util.StringUtil;
 
 /**
@@ -40,6 +44,7 @@ public class Main extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
+	public HashMap<String, Role> roles;
 
 	private ObservableList<PersonGiveProfessor> personData = FXCollections.observableArrayList();
 
@@ -71,8 +76,8 @@ public class Main extends Application {
 		this.primaryStage.getIcons().add(new Image("file:resources/images/Address_Book.png"));
 
 		initRootLayout();
-		//showLoginScreen();
-		showMenu();
+		showLoginScreen();
+
 
 	}
 
@@ -97,6 +102,7 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
+
 
 	public void showPersonOverview() {
 		try {
@@ -180,18 +186,25 @@ public class Main extends Application {
 		}
 	}
 
-	public void showMenu() {
+	public void showMenu(HashMap<String, Role> roles) {
 		try {
+
+			this.roles = roles;
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("../ui/Menu.fxml"));
+
+
 			AnchorPane menu = (AnchorPane) loader.load();
+
 			// Set person overview into the center of root layout.
 			rootLayout.setCenter(menu);
 			primaryStage.setTitle(StringUtil.TITLE_MENU);
 			// primaryStage.show();
 			MenuController menuController = loader.getController();
 			menuController.setMainApp(this);
+			menuController.setFuntionList(roles);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

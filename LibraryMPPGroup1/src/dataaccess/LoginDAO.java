@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import model.Administrator;
 import model.Librarian;
 import model.Login;
+import util.StringUtil;
 public class LoginDAO {
 
 	public static final String OUTPUT_DIR = System.getProperty("user.dir")
@@ -36,7 +37,7 @@ public class LoginDAO {
 			output.writeObject(user);
 
 
-			user = new Login("admin", "111");
+			user = new Login("admin1", "111");
 			user.addRole(new Administrator());
 			output.writeObject(user);
 
@@ -53,7 +54,7 @@ public class LoginDAO {
 
 
 
-	public static boolean checkAccount(Login login) {
+	public static Login checkAccount(Login login) {
 
 		try {
 
@@ -70,7 +71,7 @@ public class LoginDAO {
 							(user.getPassword()!= null && user.getPassword().equals(login.getPassword()) )){
 						System.out.println(user.getUserName() + "  " + user.getPassword());
 						input.close();
-						return true;
+						return user;
 					}
 					object = input.readObject();
 				}
@@ -85,7 +86,7 @@ public class LoginDAO {
 			e.printStackTrace();
 		}
 
-		return false;
+		return null;
 	}
 
 }

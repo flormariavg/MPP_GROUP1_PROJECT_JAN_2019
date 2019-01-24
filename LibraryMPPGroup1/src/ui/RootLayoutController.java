@@ -11,22 +11,22 @@ public class RootLayoutController {
 	private void initialize() {
 		preJava8();
 	}
-	
+
 	private void preJava8() {
-		
+
 	}
-	
+
 	@FXML
 	public void back() {
-		mainApp.showMenu();
+		mainApp.showMenu(mainApp.roles);
 	}
-	
+
 	private Main mainApp;
 
 	public void setMainApp(Main main) {
 		this.mainApp = main;
 	}
-	
+
 	@FXML
 	private void handleChekoutBook() {
 		mainApp.showCheckoutBook();
@@ -36,7 +36,7 @@ public class RootLayoutController {
 	public void handleBookCopy() {
 		mainApp.showBookCopy();
 	}
-	
+
 	@FXML
 	public void handleAddNewBook() {
 		mainApp.showBookCopy();

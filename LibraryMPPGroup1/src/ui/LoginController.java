@@ -19,11 +19,12 @@ public class LoginController {
 	private void handleLogin() {
 		Login login = new Login(txtUser.getText(), txtPassword.getText());
 		LoginService loginService= new LoginService();
-		if(loginService.login(login)) {
+		login = loginService.login(login) ;
+		if(login != null) {
 
-			mainApp.showMenu();
+			mainApp.showMenu(login.getRoles());
 			//mainApp.showAddNewBook();
-			
+
 
 		} else {
 			System.out.println("Login fail");

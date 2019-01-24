@@ -5,7 +5,7 @@ import model.Login;
 
 public class LoginService {
 
-	public boolean login(Login login) {
+	public Login login(Login login) {
 		return LoginDAO.checkAccount(login);
 
 	}
