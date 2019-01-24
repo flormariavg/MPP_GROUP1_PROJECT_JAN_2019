@@ -1,4 +1,10 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root {
+    -fx-background-color: #0A959A;
+    -fx-background-image: url("background.jpg");
+    -fx-background-size: cover;
+}
+
 .background {
     -fx-background-color: #0A959A;
 }
@@ -6,21 +12,21 @@
 .label {
     -fx-font-size: 11.0pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 
 }
 
 .label-bright {
     -fx-font-size: 11.0pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 
 }
 
 .label-header {
     -fx-font-size: 32.0pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 
 }
 
