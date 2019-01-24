@@ -17,6 +17,7 @@ public class Librarian extends Person implements Role, Serializable {
 	public Librarian() {
 		functionList = new ArrayList<Integer>();
 		functionList.add(Functions.CHEKOUTBOOK.getValue());
+		functionList.add(Functions.CHECKOUT_OVERDUE.getValue());
 	}
 
 	@Override

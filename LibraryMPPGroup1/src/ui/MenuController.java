@@ -26,6 +26,9 @@ public class MenuController {
 	@FXML
 	private Button checkoutBookBtn;
 
+	@FXML
+	private Button checkoutOverDueBtn;
+
 	private HashMap<String, Role> roles;
 	public void setMainApp(Main main) {
 		this.mainApp = main;
@@ -37,6 +40,7 @@ public class MenuController {
 		addNewBookBtn.setDisable(true);
 		addNewMemberBtn.setDisable(true);
 		checkoutBookBtn.setDisable(true);
+		checkoutOverDueBtn.setDisable(true);
 		if (roles != null) {
 			  Set<String> keys = roles.keySet();
 		        for(String key: keys){
@@ -50,6 +54,8 @@ public class MenuController {
 								addNewMemberBtn.setDisable(false);
 							} else if (integer == Functions.CHEKOUTBOOK.getValue()){
 								checkoutBookBtn.setDisable(false);
+							} else if (integer == Functions.CHECKOUT_OVERDUE.getValue()) {
+								checkoutOverDueBtn.setDisable(false);
 							}
 						}
 		            } else if (key.equals(StringUtil.LIBRARIAN_ROLE)){
@@ -62,6 +68,8 @@ public class MenuController {
 								addNewMemberBtn.setDisable(false);
 							} else if (integer == Functions.CHEKOUTBOOK.getValue()){
 								checkoutBookBtn.setDisable(false);
+							} else if (integer == Functions.CHECKOUT_OVERDUE.getValue()) {
+								checkoutOverDueBtn.setDisable(false);
 							}
 
 		            }
@@ -99,11 +107,11 @@ public class MenuController {
 	public void handleAddNewLibraryMember() {
 		mainApp.showMemberOverview();
 	}
-	
+
 	@FXML
 	public void handleOverdue() {
 		mainApp.showOverdue();
 	}
-	
+
 }
 

@@ -21,7 +21,7 @@
             <Button fx:id="addNewBookBtn" mnemonicParsing="false" onAction="#handleAddNewBook" prefHeight="111.0" prefWidth="215.0" text="Add new book" />
             <Button fx:id="addNewMemberBtn" mnemonicParsing="false" onAction="#handleAddNewLibraryMember" prefHeight="111.0" prefWidth="213.0" text="New Library Member" GridPane.columnIndex="1" />
             <Button fx:id="checkoutBookBtn" mnemonicParsing="false" onAction="#handleChekoutBook" prefHeight="103.0" prefWidth="218.0" text="Checkout a book" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#handleOverdue" prefHeight="108.0" prefWidth="212.0" text="Overdue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="checkoutOverDueBtn" mnemonicParsing="false" onAction="#handleOverdue" prefHeight="108.0" prefWidth="212.0" text="Overdue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Label layoutX="392.0" layoutY="34.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="326.0" styleClass="lable-title" text="Library System">

@@ -4,7 +4,8 @@ public enum Functions {
 	CHEKOUTBOOK(0),
 	ADD_NEW_MEMBER(1),
 	EDIT_MEMBER(2),
-	ADD_NEW_BOOK(3);
+	ADD_NEW_BOOK(3),
+	CHECKOUT_OVERDUE(4);
 
 	private int value;
 
