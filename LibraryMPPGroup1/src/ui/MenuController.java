@@ -26,9 +26,13 @@ public class MenuController {
 	public void handleBookCopy() {
 		mainApp.showBookCopy();
 	}
-	
+
 	@FXML
 	public void handleAddNewBook() {
-		mainApp.showBookCopy();
+		mainApp.showAddNewBook();
+	}
+
+	public void handleAddNewLibraryMember() {
+		mainApp.showMemberOverview();
 	}
 }
