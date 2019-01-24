@@ -90,9 +90,9 @@ public class Main extends Application {
 
 	public static void createData() {
 
-		dataaccess.Main.createLoginAccountData();
-		dataaccess.Main.createBookData();
-		dataaccess.Main.createMemberData();
+//		dataaccess.Main.createLoginAccountData();
+//		dataaccess.Main.createBookData();
+//		dataaccess.Main.createMemberData();
 
 	}
 
