@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ChechoutBookOverviewController">
    <children>
-      <SplitPane dividerPositions="0.6175231676495366" layoutX="14.0" layoutY="14.0" prefHeight="784.0" prefWidth="1189.0" styleClass="background">
+      <SplitPane dividerPositions="0.6175231676495366" layoutX="14.0" layoutY="14.0" prefHeight="784.0" prefWidth="1189.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="740.0" prefWidth="707.0">
                <children>

@@ -27,6 +27,7 @@ import ui.MemberController;
 import ui.MenuController;
 import ui.PersonEditDialogController;
 import ui.PersonOverviewController;
+import ui.RootLayoutController;
 import util.StringUtil;
 
 /**
@@ -85,7 +86,8 @@ public class Main extends Application {
 
 			loader.setLocation(Main.class.getResource("../ui/RootLayout.fxml"));
 			rootLayout = (BorderPane) loader.load();
-
+			RootLayoutController controller = loader.getController();
+			controller.setMainApp(this);
 			// Show the scene containing the root layout.
 			// Scene scene = new Scene(anchorPane);
 			Scene scene = new Scene(rootLayout);

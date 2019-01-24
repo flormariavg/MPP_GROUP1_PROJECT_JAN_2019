@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@../application/DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="900.0" prefWidth="1210.0" stylesheets="@../application/DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.RootLayoutController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Book Manager">
             <items>
-              <MenuItem mnemonicParsing="false" text="Add new book" />
-                  <MenuItem mnemonicParsing="false" text="Add new book copy" />
-                  <MenuItem mnemonicParsing="false" text="Checkout a book" />
+              <MenuItem mnemonicParsing="false" onAction="#handleAddNewBook" text="Add new book" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleBookCopy" text="Add new book copy" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleChekoutBook" text="Checkout a book" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Member Manager">
@@ -30,4 +30,11 @@
         </menus>
       </MenuBar>
    </top>
+   <bottom>
+      <Pane prefHeight="52.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="1073.0" layoutY="10.0" mnemonicParsing="false" onAction="#back" text="Home" />
+         </children>
+      </Pane>
+   </bottom>
 </BorderPane>
