@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.Main;
+import business.BookService;
+import business.CheckoutBookService;
 import business.OverdueData;
 import business.OverdueService;
 import javafx.event.ActionEvent;
@@ -17,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.Book;
 import util.Util;
 
 public class OverdueController {
@@ -47,6 +50,8 @@ public class OverdueController {
 	public OverdueController() {
 		service = new OverdueService();
 	}
+	
+	
 	@FXML
 	public void btnSearch(ActionEvent event) throws IOException {
 		//Uncomment this for validate duedate
@@ -56,7 +61,7 @@ public class OverdueController {
 		List<OverdueData> dataAux = service.searchBookOverdue(isbn.getText());
 		List<OverdueData> data = new ArrayList<>();
 		for (OverdueData overdueData : dataAux) {
-			if(overdueData.getDuedateDate().compareTo(LocalDate.now())>0)
+			if(overdueData.getDuedateDate().compareTo(LocalDate.now())<0)
 				data.add(overdueData);
 		}
 		
@@ -71,8 +76,9 @@ public class OverdueController {
 			bookCopyTable.getItems().setAll(data);
 		}
 		else
-			Util.showAlert(AlertType.INFORMATION, "INFO", "Copies not available", "There aren't copies for the book ");
+			Util.showAlert(AlertType.INFORMATION, "INFO", "No Overdues", "Not overdues for the book");
 	}
+	
 
 	private Main mainApp;
 

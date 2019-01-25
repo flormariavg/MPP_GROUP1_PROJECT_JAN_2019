@@ -8,6 +8,7 @@ import business.CheckoutBookService;
 import model.Address;
 import model.Administrator;
 import model.Book;
+import model.BookCopy;
 import model.Librarian;
 import model.Login;
 import model.Member;
@@ -15,7 +16,7 @@ import model.Member;
 public class Main {
 	public static void main(String[] args) {
 
-
+/*
 		CheckoutBookService service = new CheckoutBookService();
 
 		Member member= new Member("123","Flor", "Vargas", "999999", new Address("Street", "555", "Farfield", "Iowa"), "123");
@@ -24,14 +25,19 @@ public class Main {
 
 		Book book= new Book("123", "123",null , "availability", 21);
 		service.createBook(book);
-		System.out.println(service.getBook("123"));
+		System.out.println(service.getBook("123"));*/
 
+		testOerdue ();
 	}
 
 
-	public static void createMemberData () {
-
-
+	public static void testOerdue () {
+		
+		CheckoutBookService boCheckoutBookService= new CheckoutBookService();
+		Book bookTest= boCheckoutBookService.getBook("book1");
+		BookCopy bookCopy= bookTest.getBooks().get(0);
+		
+		System.out.println(bookTest);
 
 	}
 	public static void createBookData () {

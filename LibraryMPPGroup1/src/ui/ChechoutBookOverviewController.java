@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.Author;
 import model.Book;
 import model.BookCopy;
 import model.CheckoutEntry;
@@ -90,7 +91,12 @@ public class ChechoutBookOverviewController {
 			lblLastName.setText(member.getLastName());
 			lblISBN.setText(book.getISBNNumber());
 			lblTitle.setText(book.getTitle());
-			// lblAuthor.setText(Arrays.toString(book.getAuthorList().toArray()));
+			String authorInfo = "";
+			if(book.getAuthorList()!=null)
+			for(Author a : book.getAuthorList()) {
+				authorInfo+=a.getLastName()+" "+a.getFirstName()+"\n";
+			}
+			lblAuthor.setText(authorInfo);
 			List<BookCopy> bookCopies = book.getBooks();
 
 			System.out.println(bookCopies.size());
